@@ -17,9 +17,9 @@ description: Representa un modelo de Propiedad, diseñado para almacenar informa
     "max_guests": 4,
     "max_babies": 1,
     "proof_of_address" : "https://www.orimi.com/pdf-test.pdf",
-    "is_proof_of_address_valid" : false,
+    "is_proof_of_address_verified" : false,
     "land_use_permit" : "https://www.orimi.com/pdf-test.pdf",
-    "is_land_use_permit_valid" : false,
+    "is_land_use_permit_verified" : false,
     "bedrooms": [
         Bedroom(),
         Bedroom(),
@@ -74,9 +74,9 @@ description: Representa un modelo de Propiedad, diseñado para almacenar informa
 | `max_guests`        | `Number`     | Número máximo de huéspedes permitidos en la propiedad.                      |
 | `max_babies`        | `Number`     | Número máximo de bebés permitidos en la propiedad.                          |
 | `proof_of_address`  | `String`     | URL del documento que acredita la dirección de la propiedad.               |
-| `is_proof_of_address_valid` | `Boolean` | Si es **False** Significa que el documento no ha sido validado.            |
+| `is_proof_of_address_verified` | `Boolean` | Si es **False** Significa que el documento no ha sido validado.            |
 | `land_use_permit`   | `String`     | URL del documento que acredita el uso de suelo de la propiedad.            |
-| `is_land_use_permit_valid` | `Boolean` | Si es **False** Significa que el documento no ha sido validado.            |
+| `is_land_use_permit_verified` | `Boolean` | Si es **False** Significa que el documento no ha sido validado.            |
 | `bedrooms`          | `List`      | Lista de habitaciones de la propiedad. Ver [Bedroom](/docs/database/models/secondary-models/bedroom). |
 | `kitchens`          | `List`      | Lista de cocinas de la propiedad. Ver [Kitchen](/docs/database/models/secondary-models/kitchen). |
 | `bathrooms`         | `List`      | Lista de baños de la propiedad. Ver [Bathroom](/docs/database/models/secondary-models/bathroom). |
@@ -109,9 +109,9 @@ description: Representa un modelo de Propiedad, diseñado para almacenar informa
     "max_guests": 4,
     "max_babies": 1,
     "proof_of_address" : "https://www.orimi.com/pdf-test.pdf",
-    "is_proof_of_address_valid" : false,
+    "is_proof_of_address_verified" : false,
     "land_use_permit" : "https://www.orimi.com/pdf-test.pdf",
-    "is_land_use_permit_valid" : false,
+    "is_land_use_permit_verified" : false,
     "bedrooms": [
         {
             "_id" : ObjectId("679eb0ba5d663ab7ad2b7318"),

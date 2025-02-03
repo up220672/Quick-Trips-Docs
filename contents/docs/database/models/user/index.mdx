@@ -21,14 +21,17 @@ description: Representa un modelo de Usuario, diseñado para almacenar informaci
     "language": "es",
     "address": address(),
     "currency": "MXN",
-    "verified": true,
     "created_at": ISODate("2023-10-05T14:30:00Z"),
     "last_login": ISODate("2023-10-05T14:30:00Z"),
     "is_active": true,
     "identity_document": "https://www.orimi.com/pdf-test.pdf",
+    "is_identity_document_verified": true,
     "tax_document": "https://www.orimi.com/pdf-test.pdf",
+    "is_tax_document_verified": true,
     "proof_of_residence": "https://www.orimi.com/pdf-test.pdf",
+    "is_proof_of_residence_verified": true,
     "criminal_record_certificate": "https://www.orimi.com/pdf-test.pdf",
+    "is_criminal_record_certificate_verified": true,
     "properties": [
         Property(),
         Property()
@@ -85,19 +88,22 @@ Estos usuarios se utilizan para administrar la plataforma. Por lo tanto, no se r
 - `language`
 - `address`
 - `currency`
-- `verified`
 - `created_at`
 - `last_login`
 - `is_active`
 - `identity_document`
+- `is_identity_document_verified`
 - `proof_of_residence`
+- `is_proof_of_residence_verified`
 - `criminal_record_certificate`
+- `is_criminal_record_certificate_verified`
 
 #### Rol 1: Host
 
 **Los mismos campos que el rol 2, más:**
 
 - `tax_document`
+- `is_tax_document_verified`
 - `properties`
 
 
@@ -119,12 +125,15 @@ Estos usuarios se utilizan para administrar la plataforma. Por lo tanto, no se r
 | `language`                     | `String`   | Idioma preferido del usuario (ejemplo: "es", "en").                                          |
 | `address`                      | `Object`   | Dirección del usuario  Ver [Address](/docs/database/models/secondary-models/address).        |
 | `currency`                     | `String`   | Código de la moneda preferida del usuario (ejemplo: "MXN", "USD").                           |
-| `verified`                     | `Boolean`  | Indica si el usuario está verificado.                                                        |
 | `created_at`                   | `Date`     | Fecha de creación del usuario.                                                               |
 | `last_login`                   | `Date`     | Fecha del último inicio de sesión del usuario.                                               |
 | `is_active`                    | `Boolean`  | Indica si la cuenta del usuario está activa.                                                 |
 | `identity_document`            | `String`   | URL del documento de identidad del usuario.                                                  |
+| `is_identity_document_verified`| `Boolean`  | Indica si el documento de identidad del usuario ha sido verificado.                         |
 | `tax_document`                 | `String`   | URL del documento fiscal (RFC) del usuario.                                                  |
+| `is_tax_document_verified`     | `Boolean`  | Indica si el documento fiscal del usuario ha sido verificado.                                |
 | `proof_of_residence`           | `String`   | URL del comprobante de domicilio del usuario.                                                |
+| `is_proof_of_residence_verified`| `Boolean` | Indica si el comprobante de domicilio del usuario ha sido verificado.                        |
 | `criminal_record_certificate`  | `String`   | URL del certificado de antecedentes no penales del usuario.                                  |
+| `is_criminal_record_certificate_verified`| `Boolean` | Indica si el certificado de antecedentes no penales del usuario ha sido verificado.    |
 | `properties`                   | `Array`    | Lista de propiedades asociadas con el usuario.  Ver [Property](/docs/database/models/property).|

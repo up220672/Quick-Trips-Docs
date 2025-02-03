@@ -1,0 +1,164 @@
+@import url("./syntax.css");
+
+:root {
+  font-variant-ligatures: none;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* nebula */
+@layer base {
+  :root {
+      --background: 152 9% 98%; /* Soft white with a hint of green */
+      --foreground: 160 10% 10%; /* Dark forest green */
+      --card: 0 0% 100%; /* Pure white for a clean look */
+      --card-foreground: 160 10% 10%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 160 10% 10%;
+      --primary: 158 85% 40%; /* Vibrant Supabase green */
+      --primary-foreground: 0 0% 100%; /* Pure white for contrast */
+      --secondary: 152 14% 90%; /* Light mint green */
+      --secondary-foreground: 160 10% 10%;
+      --muted: 152 14% 90%;
+      --muted-foreground: 160 10% 40%; /* Muted olive green */
+      --accent: 158 85% 40%; /* Same green as primary */
+      --accent-foreground: 0 0% 100%;
+      --destructive: 0 65% 55%; /* Light red for warnings */
+      --destructive-foreground: 0 0% 100%;
+      --border: 160 10% 85%; /* Light grey-green border */
+      --input: 160 10% 85%;
+      --ring: 158 85% 50%; /* Slightly lighter green ring */
+      --radius: 0.5rem;
+      --chart-1: 158 85% 40%; /* Green for primary chart */
+      --chart-2: 160 20% 45%; /* Subdued green for charts */
+      --chart-3: 160 10% 30%; /* Darker forest green */
+      --chart-4: 154 60% 50%; /* Light pastel green */
+      --chart-5: 160 10% 85%; /* Very light green for background */
+  }
+
+  .dark {
+      --background: 160 10% 5%; /* Very dark greenish-grey */
+      --foreground: 0 0% 100%; /* Bright white */
+      --card: 160 10% 8%; /* Slightly lighter dark green */
+      --card-foreground: 0 0% 100%;
+      --popover: 160 10% 8%;
+      --popover-foreground: 0 0% 100%;
+      --primary: 158 85% 50%; /* Bright green for dark mode */
+      --primary-foreground: 0 0% 100%;
+      --secondary: 160 10% 15%; /* Dark muted green */
+      --secondary-foreground: 0 0% 100%;
+      --muted: 160 10% 15%;
+      --muted-foreground: 160 10% 75%; /* Light grey-green */
+      --accent: 158 85% 50%; /* Bright green accent */
+      --accent-foreground: 0 0% 100%;
+      --destructive: 0 65% 50%; /* Soft red for alerts */
+      --destructive-foreground: 0 0% 100%;
+      --border: 160 10% 15%; /* Dark green border */
+      --input: 160 10% 15%;
+      --ring: 158 85% 60%; /* Vibrant green ring */
+      --chart-1: 158 85% 50%; /* Main green for charts */
+      --chart-2: 160 20% 45%; /* Subdued green for contrast */
+      --chart-3: 160 10% 30%; /* Deep forest green */
+      --chart-4: 154 60% 50%; /* Light green accent */
+      --chart-5: 160 10% 85%; /* Soft background green */
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.prose {
+  margin: 0 !important;
+}
+
+pre {
+  padding: 2px 0 !important;
+  width: inherit !important;
+  overflow-x: auto;
+}
+
+pre > code {
+  display: grid;
+  max-width: inherit !important;
+  padding: 14px 0 !important;
+}
+
+.code-line {
+  padding: 0.75px 16px;
+  @apply border-l-2 border-transparent;
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 22px;
+  margin-left: -2px;
+  color: rgb(110, 110, 110);
+  content: attr(line);
+  font-size: 13.5px;
+  text-align: right;
+}
+
+.highlight-line {
+  @apply bg-primary/5 border-l-2 border-primary/30;
+}
+
+.rehype-code-title {
+  @apply px-2 -mb-8 w-full text-sm pb-5 font-medium mt-5 font-code;
+}
+
+.highlight-comp > code {
+  background-color: transparent !important;
+}
+
+/* Global Custom Scrollbar */
+:root {
+  --scrollbar-thumb: rgba(
+    113,
+    113,
+    122,
+    0.6
+  ); /* Subtle dark gray for light mode thumb */
+}
+
+[data-theme="dark"],
+[class*="dark"] {
+  --scrollbar-thumb: rgba(
+    160,
+    160,
+    160,
+    0.4
+  ); /* Softer gray for dark mode thumb */
+}
+
+/* Apply globally */
+* {
+  scrollbar-width: thin; /* Firefox thin scrollbar */
+  scrollbar-color: var(--scrollbar-thumb) transparent; /* Thumb color with transparent track */
+}
+
+*::-webkit-scrollbar {
+  width: 8px; /* Vertical scrollbar width */
+  height: 8px; /* Horizontal scrollbar height */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb); /* Thumb color */
+  border-radius: 9999px; /* Fully rounded thumb */
+  border: 2px solid transparent; /* Thin padding effect */
+  background-clip: content-box; /* Smooth thumb edges */
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent; /* Transparent track */
+}

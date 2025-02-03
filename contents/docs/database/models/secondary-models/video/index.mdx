@@ -1,0 +1,37 @@
+---
+title: Video
+description: Representa un modelo de Video, almacena la información de acceso y la metadata básica de un archivo de video.
+---
+
+### Modelo
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7319"),
+    "url": "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "title": "Big Buck Bunny",
+    "description": "Video de prueba de Big Buck Bunny.",
+    "duration": 145,
+    "width": 1920,
+    "height": 1080,
+    "format": "mp4",
+    "size_mb": 13,
+    "thumbnail_url": "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+}
+```
+
+### Campos
+
+| Campo              | Tipo         | Descripción                                                                 |
+|--------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`              | `ObjectId`   | Identificador único del documento del video.                               |
+| `url`              | `String`     | URL del video almacenado en un servicio de alojamiento de archivos.        |
+| `title`            | `String`     | Título del video.                                                          |
+| `description`      | `String`     | Descripción del video.                                                     |
+| `duration`         | `Number`     | Duración del video en segundos.                                            |
+| `width`            | `Number`     | Ancho del video en píxeles.                                                |
+| `height`           | `Number`     | Alto del video en píxeles.                                                 |
+| `format`           | `String`     | Formato del video (ej: "mp4", "webm").                                    |
+| `size_mb`          | `Number`     | Tamaño del archivo del video en megabytes (MB).                             |
+| `thumbnail_url`    | `String`     | URL de la miniatura del video.                                             |
+

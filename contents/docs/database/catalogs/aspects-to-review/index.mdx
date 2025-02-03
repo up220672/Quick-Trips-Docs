@@ -1,0 +1,76 @@
+---
+title: Aspects to Review
+description: Los aspectos de una reseña en QuickTrips están diseñados para reflejar diferentes dimensiones de la experiencia de los usuarios. Cada aspecto permite evaluar un área específica de la experiencia del cliente, contribuyendo a una calificación más detallada y útil.
+---
+
+| **Clave** | **Aspecto**      | **Descripción**                                                                 |
+|-----------|------------------|---------------------------------------------------------------------------------|
+| `0`       | Limpieza         | Evalúa la higiene y el estado de limpieza del lugar durante la estancia.        |
+| `1`       | Veracidad        | Compara si las características del lugar coinciden con la descripción publicada.|
+| `2`       | Llegada          | Analiza la facilidad y experiencia general del proceso de check-in.             |
+| `3`       | Comunicación     | Evalúa la rapidez y eficacia del anfitrión al resolver dudas o problemas.       |
+| `4`       | Ubicación        | Revisa si la localización fue conveniente y segura para el huésped.             |
+| `5`       | Calidad-precio   | Determina si la experiencia estuvo acorde al costo pagado.                      |
+
+---
+
+En **QuickTrips**, los aspectos evaluados en una reseña se clasifican en seis categorías principales. Estos aspectos permiten a los usuarios compartir una visión más completa sobre su experiencia, ayudando a futuros huéspedes a tomar decisiones informadas.
+
+**Limpieza**
+- **Descripción**: Evalúa el nivel de higiene y el estado de mantenimiento del lugar.  
+- **Acción requerida**: El huésped debe valorar si encontró el espacio limpio y ordenado.  
+- **Ejemplo**: "El baño estaba impecable y las sábanas olían a limpio."  
+
+**Veracidad**
+- **Descripción**: Analiza si la propiedad se corresponde con las fotos y detalles publicados.  
+- **Acción requerida**: El huésped debe verificar si lo ofrecido en la descripción se cumplió.  
+- **Ejemplo**: "Las fotos coincidían exactamente con el departamento que alquilé."  
+
+**Llegada**
+- **Descripción**: Se enfoca en la facilidad del proceso de check-in y acceso a la propiedad.  
+- **Acción requerida**: Evaluar si el anfitrión proporcionó instrucciones claras y el acceso fue sencillo.  
+- **Ejemplo**: "Me enviaron un código para la puerta y el proceso fue muy rápido."  
+
+**Comunicación**
+- **Descripción**: Mide la capacidad del anfitrión para responder rápidamente y solucionar problemas.  
+- **Acción requerida**: Evaluar la disposición del anfitrión para resolver inquietudes.  
+- **Ejemplo**: "El anfitrión respondió en menos de 10 minutos cuando le pedí ayuda con el Wi-Fi."  
+
+**Ubicación**
+- **Descripción**: Evalúa si la propiedad está bien ubicada en términos de accesibilidad, seguridad y cercanía a servicios.  
+- **Acción requerida**: Comentar sobre la conveniencia del lugar.  
+- **Ejemplo**: "Estaba cerca de restaurantes y transporte público."  
+
+**Calidad-precio**
+- **Descripción**: Analiza si la experiencia proporcionada está acorde al precio pagado.  
+- **Acción requerida**: Determinar si la calidad justifica el costo.  
+- **Ejemplo**: "La experiencia fue increíble y el precio justo."  
+
+---
+
+## Collection Design
+
+En la base de datos de **QuickTrips**, los aspectos de reseña están definidos mediante una clave única que los identifica. A continuación, se muestra un ejemplo del diseño en formato JSON:  
+
+```json
+{
+  "0": "cleanliness",
+  "1": "accuracy",
+  "2": "check_in",
+  "3": "communication",
+  "4": "location",
+  "5": "value"
+}
+```  
+
+Cada clave (`0`, `1`, `2`, etc.) representa un aspecto específico de la reseña:  
+- `"0"`: Limpieza  
+- `"1"`: Veracidad  
+- `"2"`: Llegada  
+- `"3"`: Comunicación  
+- `"4"`: Ubicación  
+- `"5"`: Calidad-precio  
+
+<Note type="warning" title="Warning">
+  Aunque las llaves esten definidas como strings (por la naturaleza de los archivos tipo JSON), **todas las referencias** a los tipos de aspect to review **DEBEN SER con números enteros**.
+</Note>

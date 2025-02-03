@@ -1,0 +1,77 @@
+---
+title: Tipo de usuario  
+description: Los tipos de usuario en QuickTrips se definen según los permisos y roles dentro de la plataforma. Cada tipo de usuario tiene funciones y requisitos específicos que determinan su interacción con la aplicación.
+---
+
+| **Clave** | **Tipo de Usuario** | **Descripción**                                                                 |
+|-----------|---------------------|---------------------------------------------------------------------------------|
+| `0`       | Admin               | Responsable de la gestión y supervisión de la plataforma.                       |
+| `1`       | Host                | Ofrece propiedades en alquiler y gestiona reservas y pagos.                     |
+| `2`       | Guest               | Realiza reservas de propiedades y gestiona pagos y estadías.                    |
+| `3000`    | Super Admin         | Su función es administrar usuarios de tipo administrador.                       |
+
+## Tipos
+
+En **QuickTrips**, los usuarios se clasifican en tres tipos principales:
+
+- **Admin**: Responsable de la gestión y supervisión de la plataforma, incluyendo la validación y aprobación de nuevos usuarios.
+- **Host**: Ofrece propiedades en alquiler y gestiona las reservas y pagos asociados a sus propiedades.
+- **Guest**: Realiza reservas de propiedades y gestiona sus pagos y estadías.
+- **Super Admin**: Su función es administrar usuarios de tipo administrador.
+
+Cada tipo de usuario está definido por una clave única en la base de datos, lo que permite una identificación clara y un control de acceso adecuado. A continuación, se detallan las características de cada tipo de usuario:
+
+### Admin
+
+El **Admin** es el usuario con el mayor nivel de permisos en la plataforma. Sus responsabilidades incluyen:
+
+- **Validación de usuarios**: Aprobar o rechazar registros de nuevos usuarios (tanto Hosts como Guests).
+- **Gestión de contenido**: Supervisar y moderar la información publicada en la plataforma, como propiedades, reseñas y comentarios.
+- **Soporte técnico**: Resolver problemas técnicos y brindar asistencia a otros usuarios.
+- **Reportes y análisis**: Generar reportes de actividad, transacciones y uso de la plataforma.
+
+### Host
+
+El **Host** es el usuario que ofrece propiedades en alquiler. Sus responsabilidades incluyen:
+
+- **Publicación de propiedades**: Crear y gestionar listados de propiedades disponibles para alquiler.
+- **Gestión de reservas**: Aceptar o rechazar solicitudes de reserva de los Guests.
+- **Recepción de pagos**: Recibir pagos por las reservas realizadas en sus propiedades.
+- **Comunicación con Guests**: Responder consultas y brindar información adicional sobre las propiedades.
+
+### Guest
+
+El **Guest** es el usuario que realiza reservas de propiedades. Sus responsabilidades incluyen:
+
+- **Búsqueda y reserva**: Explorar propiedades disponibles y realizar reservas.
+- **Gestión de pagos**: Realizar pagos por las reservas y gestionar transacciones.
+- **Evaluación y reseñas**: Dejar reseñas y calificaciones sobre las propiedades en las que se ha hospedado.
+
+### Super Admin
+
+El **Super Admin** es un **usuario maestro**, se crea directamente en la base de datos y sirve para:
+
+- **Creación de Admins**: Agregar nuevos usuarios con el rol de Admin.
+
+## Collection Design
+
+En la base de datos de QuickTrips, los tipos de usuario están definidos por una clave única que los identifica. A continuación, se muestra un ejemplo del diseño de la colección en formato JSON:
+
+```json
+{
+    "0": "admin",
+    "1": "host",
+    "2": "guest",
+    "3000": "super_admin"
+}
+```
+
+Cada clave (`0`, `1`, `2`, `3000`) representa un tipo de usuario específico:
+- `"0"`: Admin
+- `"1"`: Host
+- `"2"`: Guest
+- `"3000"`: Super Admin
+
+<Note type="warning" title="Warning">
+  Aunque las llaves esten definidas como strings (por la naturaleza de los archivos tipo JSON), **todas las referencias** a los tipos de usuario **DEBEN SER con números enteros**.
+</Note>

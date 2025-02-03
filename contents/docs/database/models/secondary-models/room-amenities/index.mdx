@@ -1,0 +1,60 @@
+---
+title: Room Amenities
+description: Representa un modelo de Amenidades, diseñado para almacenar información detallada sobre los servicios y características de una habitación en una propiedad.
+---
+
+### Modelo
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7319"),
+    "tv": true,
+    "closet": true,
+    "air_conditioner": true,
+    "heater": true,
+    "fan": true,
+    "desk": true,
+    "mirror": true,
+    "lamps": 2,
+    "wifi": true,
+    "sofa": 1,
+    "curtains": true,
+    "blackout_curtains": false,
+    "mini_fridge": true,
+    "extra_blankets": 2,
+    "extra_pillows": 4,
+    "rug": true,
+    "bookshelf": true,
+    "drawers": 4,
+    "power_outlets": 4,
+    "sound_system": false,
+    "alarm_clock": true
+}
+```
+
+### Campos
+
+| Campo              | Tipo         | Descripción                                                                 |
+|--------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`              | `ObjectId`   | Identificador único del documento que representa las amenidades de la habitación. |
+| `tv`               | `Boolean`    | Indica si hay una televisión disponible.                                   |
+| `closet`           | `Boolean`    | Determina si la habitación incluye un clóset.                              |
+| `air_conditioner`  | `Boolean`    | Verifica si hay aire acondicionado.                                        |
+| `heater`           | `Boolean`    | Indica si hay calefacción.                                                 |
+| `fan`              | `Boolean`    | Indica si hay ventilador.                                                  |
+| `desk`             | `Boolean`    | Confirma si hay un escritorio.                                             |
+| `mirror`           | `Boolean`    | Indica si hay un espejo.                                                   |
+| `lamps`            | `Number`     | Número de lámparas disponibles.                                            |
+| `wifi`             | `Boolean`    | Indica si hay conexión a internet inalámbrica.                             |
+| `sofa`             | `Number`     | Número de sofás disponibles.                                               |
+| `curtains`         | `Boolean`    | Confirma si hay cortinas estándar.                                         |
+| `blackout_curtains`| `Boolean`    | Indica si hay cortinas blackout.                                           |
+| `mini_fridge`      | `Boolean`    | Verifica si hay un mini refrigerador.                                      |
+| `extra_blankets`   | `Number`     | Número de cobijas extra disponibles.                                       |
+| `extra_pillows`    | `Number`     | Número de almohadas extra disponibles.                                     |
+| `rug`              | `Boolean`    | Indica si hay una alfombra.                                                |
+| `bookshelf`        | `Boolean`    | Indica si hay un estante para libros.                                      |
+| `drawers`          | `Number`     | Cantidad de cajones disponibles.                                           |
+| `power_outlets`    | `Number`     | Número de tomas de corriente disponibles.                                  |
+| `sound_system`     | `Boolean`    | Indica si hay un sistema de sonido.                                        |
+| `alarm_clock`      | `Boolean`    | Verifica si hay un reloj despertador.                                      |

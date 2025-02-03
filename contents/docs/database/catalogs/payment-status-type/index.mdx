@@ -1,0 +1,62 @@
+---
+title: Estado de Pago  
+description: Los estados de pago en QuickTrips se definen según el progreso y resultado de las transacciones realizadas por los usuarios. Cada estado de pago tiene una descripción específica que determina su significado dentro de la plataforma.
+---
+
+| **Clave** | **Estado**   | **Descripción**                                                                 |
+|-----------|--------------|---------------------------------------------------------------------------------|
+| `0`       | En proceso   | El pago está siendo procesado, pero aún no ha sido confirmado.                  |
+| `1`       | Rechazado    | El pago no pudo ser procesado debido a un error o falta de aprobación.          |
+| `2`       | Completado   | El pago ha sido procesado y finalizado con éxito.                               |
+
+## Estados de Pago
+
+En **QuickTrips**, los estados de pago se clasifican en tres tipos principales, que reflejan el flujo básico de una transacción:
+
+- **En proceso**: El pago está siendo procesado, pero aún no ha sido confirmado.
+- **Rechazado**: El pago no pudo ser procesado debido a fondos insuficientes, datos incorrectos, u otros motivos.
+- **Completado**: El pago ha sido procesado y finalizado con éxito.
+
+Cada estado de pago está definido por una clave única en la base de datos, lo que permite una identificación clara y una gestión adecuada. A continuación, se detallan las características de cada estado de pago:
+
+### En proceso
+
+El estado de **En proceso** indica que el pago está siendo procesado, pero aún no ha sido confirmado. Esto ocurre comúnmente en transacciones que requieren validación adicional, como transferencias bancarias o pagos que dependen de la aprobación de un administrador.
+
+- **Acción requerida**: El usuario debe esperar a que se complete el proceso de pago.
+- **Ejemplo de uso**: Cuando un usuario realiza una transferencia bancaria, el pago permanece en estado "En proceso" hasta que el administrador confirma la recepción de fondos.
+
+### Rechazado
+
+El estado de **Rechazado** indica que el pago no pudo ser procesado. Esto puede deberse a diversas razones, como fondos insuficientes, datos de pago incorrectos, o la decisión de un administrador en el caso de transferencias bancarias.
+
+- **Acción requerida**: El usuario debe intentar realizar el pago nuevamente o utilizar un método de pago diferente.
+- **Ejemplo de uso**: Si un usuario intenta pagar con una tarjeta de crédito que ha sido bloqueada, el pago se marcará como "Rechazado".
+
+### Completado
+
+El estado de **Completado** indica que el pago ha sido procesado y finalizado con éxito.
+
+- **Acción requerida**: No se requiere ninguna acción adicional por parte del usuario.
+- **Ejemplo de uso**: Cuando un pago con tarjeta de crédito es aprobado por el banco emisor, el estado se actualiza a "Completado".
+
+## Collection Design
+
+En la base de datos de QuickTrips, los estados de pago están definidos por una clave única que los identifica. A continuación, se muestra un ejemplo del diseño de la colección en formato JSON:
+
+```json
+{
+  "0": "processing",
+  "1": "rejected",
+  "2": "completed"
+}
+```
+
+Cada clave (`0`, `1`, `2`) representa un estado de pago específico:
+- `"0"`: En proceso
+- `"1"`: Rechazado
+- `"2"`: Completado
+
+<Note type="warning" title="Advertencia">
+  Aunque las llaves esten definidas como strings (por la naturaleza de los archivos tipo JSON), **todas las referencias** a los estados de pago **DEBEN SER con números enteros**.
+</Note>

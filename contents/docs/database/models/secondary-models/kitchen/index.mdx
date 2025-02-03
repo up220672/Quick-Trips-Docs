@@ -1,0 +1,36 @@
+---
+title: Kitchen  
+description: Representa un modelo para almacenar información detallada sobre las características y servicios de una cocina en una propiedad.
+---
+
+### Modelo
+
+```json
+{
+    "_id": ObjectId("679feef109ff007677d65bf3"),
+    "name": "Cocina Principal",
+    "width_m": 5.0,
+    "length_m": 4.5,
+    "amenities": KitchenAmenities(),
+    "photos": [
+        Photo(),
+        Photo()
+    ],
+    "videos": [
+        Video(),
+        Video()
+    ]
+}
+```
+
+### Campos
+
+| Campo                       | Tipo         | Descripción                                                                 |
+|-----------------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`                       | `ObjectId`   | Identificador único del documento de cocina.                                |
+| `name`                      | `String`     | Nombre o descripción de la cocina (ej: "Cocina Principal", "Cocina Secundaria"). |
+| `width_m`                   | `Number`     | Ancho de la cocina en metros.                                               |
+| `length_m`                  | `Number`     | Largo de la cocina en metros.                                               |
+| `amenities`                 | `Object`     | Detalles de las amenidades de la cocina. Ver [KitchenAmenities](/docs/database/models/secondary-models/kitchen-amenities). |
+| `photos`                    | `Array`      | Lista de fotos de la cocina. Ver [Photo](/docs/database/models/secondary-models/photo). |
+| `videos`                    | `Array`      | Lista de videos de la cocina. Ver [Video](/docs/database/models/secondary-models/video).|

@@ -1,0 +1,52 @@
+---
+title: Bedroom
+description: Representa un modelo de Habitación, diseñado para almacenar información detallada sobre las características y servicios de una habitación en una propiedad.
+---
+
+### Modelo
+
+```json
+{
+    "_id" : ObjectId("679eb0ba5d663ab7ad2b7318"),
+    "name": "Habitación Principal",
+    "description": "Habitación moderna minimalista con cama king size y baño privado.",
+    "beds": Beds(),
+    "amenities": RoomAmenities(),
+    "bathroom": Bathroom(),
+    "windows": 2,
+    "width": 4.5,
+    "length": 5.5,
+    "balcony": true,
+    "view": "Vista al jardín",
+    "soundproof_windows": false,
+    "max_guests": 2,
+    "photos": [
+        Photo(),
+        Photo(),
+    ],
+    "videos": [
+        Video(),
+        Video(),
+    ]
+}
+```
+
+### Campos
+
+| Campo               | Tipo         | Descripción                                                                 |
+|---------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`               | `ObjectId`   | Identificador único del documento de la habitación.                         |
+| `name`              | `String`     | Nombre de la habitación (ej. "Habitación Principal").                       |
+| `description`       | `String`     | Descripción de la habitación (ej. "Habitación moderna con cama king size"). |
+| `beds`              | `Object`     | Estructura de camas disponibles en la habitación (king_size, queen_size, etc.). Ver [Beds](/docs/database/models/secondary-models/beds).|
+| `amenities`         | `Object`     | Lista de amenidades disponibles (tv, closet, air_conditioner, etc.). Ver [RoomAmenities](/docs/database/models/secondary-models/room-amenities).       |
+| `bathroom`          | `Object`     | Detalles del baño (toilet, shower, sink, etc.). Ver [Bathroom](/docs/database/models/secondary-models/bathroom).                            |
+| `windows`           | `Number`     | Número de ventanas en la habitación.                                        |
+| `width`             | `Number`     | Ancho de la habitación en metros.                                           |
+| `length`            | `Number`     | Largo de la habitación en metros.                                           |
+| `balcony`           | `Boolean`    | Si la habitación tiene un balcón.                                           |
+| `view`              | `String`     | Tipo de vista desde la habitación (ej. "Vista al jardín").                  |
+| `soundproof_windows`| `Boolean`    | Indica si las ventanas son a prueba de sonido.                              |
+| `max_guests`        | `Number`     | Número máximo de huéspedes que puede alojar la habitación.                  |
+| `photos`            | `Array`      | Lista de fotos de la habitación. Ver [Photo](/docs/database/models/secondary-models/photo). |
+| `videos`            | `Array`      | Lista de videos de la habitación. Ver [Video](/docs/database/models/secondary-models/video).|

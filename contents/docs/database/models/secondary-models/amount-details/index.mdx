@@ -1,0 +1,34 @@
+---
+title: Amount Details  
+description: Representa un modelo de Detalles de Monto, diseñado para almacenar información detallada sobre los montos asociados a una transacción o reserva.
+---
+
+### Modelo
+
+```json
+{
+    "_id": ObjectId("679ecc6731d3df6f1fe65686"),
+    "subtotal": 200.00,
+    "platformCommission": 30.75,
+    "tax": 20.00,
+    "total": 250.75,
+    "currency": "MXN"
+}
+```
+
+### Campos
+
+| Campo                  | Tipo         | Descripción                                                                 |
+|------------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`                  | `ObjectId`   | Identificador único del documento de detalles de monto.                     |
+| `subtotal`             | `Number`     | Monto base antes de aplicar comisiones o impuestos.                         |
+| `platformCommission`   | `Number`     | Comisión cobrada por la plataforma por la transacción o reserva.            |
+| `tax`                  | `Number`     | Impuestos aplicados al monto total.                                         |
+| `total`                | `Number`     | Monto final a pagar, incluyendo subtotal, comisión e impuestos.             |
+| `currency`             | `String`     | Moneda en la que se realiza la transacción (ej: "MXN", "USD").              |
+
+---
+
+<Note type="danger" title="Moneda">
+    El campo `currency` debe seguir el estándar ISO 4217 para códigos de moneda (ej: "MXN" para pesos mexicanos, "USD" para dólares estadounidenses).
+</Note>

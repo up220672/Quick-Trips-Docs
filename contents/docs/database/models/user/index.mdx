@@ -1,0 +1,130 @@
+---
+title: User  
+description: Representa un modelo de Usuario, diseñado para almacenar información detallada sobre los usuarios de la plataforma, incluyendo datos personales, preferencias, roles y actividad.  
+---
+
+### Modelo  
+
+```json
+{
+    "_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e6"),
+    "username": "juanperez",
+    "first_name": "Juan",
+    "last_name": "Pérez",
+    "description_markdown": "Hola, soy Juan, un viajero apasionado que disfruta conocer nuevas culturas y lugares.",
+    "email": "juan@example.com",
+    "phone": "+521234567890",
+    "password_hash": "68efa2a44f66ee921ea728ece5371940d41ac3b5",
+    "role": 2,
+    "profile_picture": "https://placehold.co/150x150.png",
+    "date_of_birth": ISODate("2023-10-05T14:30:00Z"),
+    "language": "es",
+    "address": address(),
+    "currency": "MXN",
+    "verified": true,
+    "created_at": ISODate("2023-10-05T14:30:00Z"),
+    "last_login": ISODate("2023-10-05T14:30:00Z"),
+    "is_active": true,
+    "identity_document": "https://www.orimi.com/pdf-test.pdf",
+    "tax_document": "https://www.orimi.com/pdf-test.pdf",
+    "proof_of_residence": "https://www.orimi.com/pdf-test.pdf",
+    "criminal_record_certificate": "https://www.orimi.com/pdf-test.pdf",
+    "properties": [
+        Property(),
+        Property()
+    ]
+}
+```
+
+### Campos usados en base al [rol de usuario](/docs/database/catalogs/user-type)
+
+Todos los roles de usuario utilizan el mismo modelo de datos, pero los campos pertenecientes a otro tip1o de usuario serán **nulos**. Por ejemplo, un usuario con rol 2 (Guest) tendrá el campo `tax_document` y `properties` pero serán `nulos`.
+
+#### Rol 3000: Super Admin
+
+**Usuario Maestro**, es un usuario que se crea directamente en la base de datos, no interactua en el sistema con otros usuarios, al iniciar sesión con este usuario inmediatamente navega a una pantalla especial para añadir o eliminar usuarios de rol 0.
+Solo necesita:
+
+- `_id`
+- `username`
+- `password_hash`
+- `role`
+
+#### Rol 0: Admin
+
+Estos usuarios se utilizan para administrar la plataforma. Por lo tanto, no se requiere información adicional. Sin embargo, para mantener la consistencia, se utilizan solo los siguientes campos:
+
+- `_id`
+- `username`
+- `first_name`
+- `last_name`
+- `description`
+- `email`
+- `password_hash`
+- `role`
+- `profile_picture`
+- `language`
+- `created_at`
+- `last_login`
+- `is_active`
+
+
+#### Rol 2: Guest
+
+- `_id`
+- `username`
+- `first_name`
+- `last_name`
+- `description`
+- `email`
+- `phone`
+- `password_hash`
+- `role`
+- `profile_picture`
+- `date_of_birth`
+- `language`
+- `address`
+- `currency`
+- `verified`
+- `created_at`
+- `last_login`
+- `is_active`
+- `identity_document`
+- `proof_of_residence`
+- `criminal_record_certificate`
+
+#### Rol 1: Host
+
+**Los mismos campos que el rol 2, más:**
+
+- `tax_document`
+- `properties`
+
+
+### Campos  
+
+| Field                          | Type       | Descripción                                                                                  |
+|--------------------------------|------------|----------------------------------------------------------------------------------------------|
+| `_id`                          | `ObjectId` | Identificador único del usuario.                                                             |
+| `username`                     | `String`   | Nombre de usuario (único).                                                                   |
+| `first_name`                   | `String`   | Nombre del usuario.                                                                          |
+| `last_name`                    | `String`   | Apellido del usuario.                                                                        |
+| `description`                  | `String`   | Descripción del usuario                                                                      |
+| `email`                        | `String`   | Correo electrónico del usuario (único).                                                      |
+| `phone`                        | `String`   | Número de teléfono del usuario.                                                              |
+| `password_hash`                | `String`   | Contraseña cifrada del usuario.                                                              |
+| `role`                         | `Number`   | Rol del usuario  Ver [User Type](/docs/database/catalogs/user-type).                         |
+| `profile_picture`              | `String`   | URL de la foto de perfil del usuario.                                                        |
+| `date_of_birth`                | `Date`     | Fecha de nacimiento del usuario.                                                             |
+| `language`                     | `String`   | Idioma preferido del usuario (ejemplo: "es", "en").                                          |
+| `address`                      | `Object`   | Dirección del usuario  Ver [Address](/docs/database/models/secondary-models/address).        |
+| `currency`                     | `String`   | Código de la moneda preferida del usuario (ejemplo: "MXN", "USD").                           |
+| `verified`                     | `Boolean`  | Indica si el usuario está verificado.                                                        |
+| `created_at`                   | `Date`     | Fecha de creación del usuario.                                                               |
+| `last_login`                   | `Date`     | Fecha del último inicio de sesión del usuario.                                               |
+| `is_active`                    | `Boolean`  | Indica si la cuenta del usuario está activa.                                                 |
+| `identity_document`            | `String`   | URL del documento de identidad del usuario.                                                  |
+| `tax_document`                 | `String`   | URL del documento fiscal (RFC) del usuario.                                                  |
+| `proof_of_residence`           | `String`   | URL del comprobante de domicilio del usuario.                                                |
+| `criminal_record_certificate`  | `String`   | URL del certificado de antecedentes no penales del usuario.                                  |
+| `properties`                   | `Array`    | Lista de propiedades asociadas con el usuario.  Ver [Property](/docs/database/models/property).|

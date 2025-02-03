@@ -1,0 +1,66 @@
+---
+title: Bathroom Amenities
+description: Representa un modelo de Amenidades de Baño, diseñado para almacenar información detallada sobre los objetos y caracteristicas de un baño en una propiedad.
+---
+
+### Modelo
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7320"),
+    "shower": true,
+    "hot_water": true,
+    "bathtub": false,
+    "toilet": true,
+    "sink": true,
+    "mirror": true,
+    "hair_dryer": true,
+    "towels": 4,
+    "toilet_paper": 2,
+    "soap": true,
+    "shampoo": true,
+    "conditioner": true,
+    "body_wash": true,
+    "bathrobe": false,
+    "slippers": false,
+    "trash_bin": true,
+    "laundry_basket": true,
+    "heated_towel_rack": false,
+    "bidet": false,
+    "hand_dryer": false,
+    "power_outlets": 1,
+    "plants": true,
+    "candles": false,
+    "aromatherapy": true,
+}
+```
+
+### Campos
+
+| Campo               | Tipo         | Descripción                                                             |
+|---------------------|--------------|-------------------------------------------------------------------------|
+| `_id`               | `ObjectId`   | Identificador único del documento que representa las amenidades del baño. |
+| `shower`            | `Boolean`    | Indica si hay una ducha.                                               |
+| `hot_water`         | `Boolean`    | Indica si hay agua caliente.                                           |
+| `bathtub`           | `Boolean`    | Verifica si hay una bañera.                                            |
+| `toilet`            | `Boolean`    | Indica si hay un inodoro.                                              |
+| `sink`              | `Boolean`    | Confirma si hay un lavabo.                                             |
+| `mirror`            | `Boolean`    | Indica si hay un espejo.                                               |
+| `hair_dryer`        | `Boolean`    | Verifica si hay un secador de cabello.                                 |
+| `towels`            | `Number`     | Cantidad de toallas disponibles.                                       |
+| `toilet_paper`      | `Number`     | Cantidad de rollos de papel higiénico disponibles.                     |
+| `soap`              | `Boolean`    | Indica si se proporciona jabón.                                        |
+| `shampoo`           | `Boolean`    | Verifica si hay shampoo disponible.                                    |
+| `conditioner`       | `Boolean`    | Indica si se proporciona acondicionador.                               |
+| `body_wash`         | `Boolean`    | Indica si se proporciona gel de baño.                                  |
+| `bathrobe`          | `Boolean`    | Verifica si se proporcionan batas de baño.                             |
+| `slippers`          | `Boolean`    | Indica si se proporcionan pantuflas.                                   |
+| `trash_bin`         | `Boolean`    | Confirma si hay un bote de basura.                                     |
+| `laundry_basket`    | `Boolean`    | Indica si hay un cesto para la ropa sucia.                             |
+| `heated_towel_rack` | `Boolean`    | Verifica si hay un calentador de toallas.                              |
+| `bidet`             | `Boolean`    | Indica si hay un bidet.                                                |
+| `hand_dryer`        | `Boolean`    | Indica si hay un secador de manos eléctrico.                           |
+| `power_outlets`     | `Number`     | Cantidad de tomas de corriente disponibles en el baño.                 |
+| `plants`            | `Boolean`    | Indica si hay plantas en el baño.                                      |
+| `candles`           | `Boolean`    | Verifica si hay velas en el baño.                                      |
+| `aromatherapy`      | `Boolean`    | Indica si hay aromaterapia en el baño.                                 |

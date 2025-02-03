@@ -8,11 +8,6 @@ description: Representa un modelo de Pago, diseñado para almacenar información
 ```json
 {
     "_id": ObjectId("679eb0ba5d663ab7ad2b7318"),
-    "payment_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "booking_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "user_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "property_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "host_id": ObjectId("679eb2e10674ac227ab940f9"),
     "amount_details": AmountDetails(),
     "card" : CardPaymentMethod(),
     "current_status": 0,
@@ -26,11 +21,6 @@ description: Representa un modelo de Pago, diseñado para almacenar información
 | Campo               | Tipo         | Descripción                                                                 |
 |---------------------|--------------|-----------------------------------------------------------------------------|
 | `_id`               | `ObjectId`   | Identificador único del documento de pago.                                  |
-| `payment_id`        | `ObjectId`   | Identificador único de la transacción de pago.                              |
-| `booking_id`        | `ObjectId`   | Identificador de la reserva asociada al pago.                               |
-| `user_id`           | `ObjectId`   | Identificador del usuario que realizó el pago.                              |
-| `property_id`       | `ObjectId`   | Identificador de la propiedad asociada al pago.                             |
-| `host_id`           | `ObjectId`   | Identificador del host que recibe el pago.                                  |
 | `amount_details`    | `Object`     | Detalles del monto asociado al pago. Ver [Amount Details](/docs/database/models/secondary-models/amount-details). |
 | `card`              | `Object`     | Método de pago con tarjeta asociado al pago. Ver [Card Payment Method](/docs/database/models/secondary-models/card-payment-method). |
 | `current_status`    | `Number`     | Estado actual del pago. Ver [Card Payment Method](/docs/database/catalogs/payment-status-type). |
@@ -42,11 +32,6 @@ description: Representa un modelo de Pago, diseñado para almacenar información
 ```json
  {
     "_id": ObjectId("679ecc009d413f3541bf6418"),
-    "payment_id": ObjectId("679ecc0d10e1515ca8a98b9b"),
-    "booking_id": ObjectId("679ecc1d9aec8d0be6d6b2ae"),
-    "user_id": ObjectId("679ecc238b3cd3b125cb5a3a"),
-    "property_id": ObjectId("679ecc29c290875876a75174"),
-    "host_id": ObjectId("679ecc2e96733878c93984f1"),
     "amount_details": {
         "_id": ObjectId("679ecc34acd508d87eb99b6f"),
         "subtotal": 200.00,

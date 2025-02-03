@@ -26,6 +26,7 @@ export const ROUTES: EachRoute[] = [
         title: "Catalog Collections",
         href: "/catalogs",
         items: [
+          { title: "Routes", href: "/routes" },
           { title: "User Type", href: "/user-type" },
           { title: "Payment Status Type", href: "/payment-status-type" },
           { title: "Aspects To Review", href: "/aspects-to-review" },
@@ -41,6 +42,7 @@ export const ROUTES: EachRoute[] = [
           { title: "User", href: "/user" },
           { title: "Payment", href: "/payment" },
           { title: "Property", href: "/property" },
+          { title: "Booking", href: "/booking" },
           {
             title: "Secondary Models",
             href: "/secondary-models",
@@ -60,6 +62,7 @@ export const ROUTES: EachRoute[] = [
               { title: "Bedroom", href: "/bedroom" },
               { title: "Bathroom", href: "/bathroom" },
               { title: "Kitchen", href: "/kitchen" },
+              { title: "Notification", href: "/notification" },
             ],
           },
         ],

@@ -1,0 +1,61 @@
+---
+title: Booking  
+description: Representa un modelo de Reservación, diseñado para almacenar información detallada sobre cada vez que un huésped realiza una reserva de una propiedad.
+---
+
+### Modelo
+
+```json
+{
+    "_id": ObjectId("67a11af7f65cde31c4b7b9c6"),
+    "payment_id": ObjectId("679eb2e10674ac227ab940f9"),
+    "booking_id": ObjectId("679eb2e10674ac227ab940f9"),
+    "user_id": ObjectId("679eb2e10674ac227ab940f9"),
+    "property_id": ObjectId("679eb2e10674ac227ab940f9"),
+    "host_id": ObjectId("679eb2e10674ac227ab940f9"),
+    "check_in": ISODate("2022-01-15T00:00:00Z"),
+    "check_out": ISODate("2022-01-20T00:00:00Z"),
+    "guests": 2,
+    "pets": 0,
+    "created_at": ISODate("2022-01-15T00:00:00Z"),
+    "is_active": true
+}
+```
+
+### Campos
+
+| Campo               | Tipo         | Descripción                                                                 |
+|---------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`               | `ObjectId`   | Identificador único del documento de reservación.                           |
+| `payment_id`        | `ObjectId`   | Identificador único de la transacción de pago asociada a la reservación.    |
+| `booking_id`        | `ObjectId`   | Identificador único de la reservación.                                      |
+| `user_id`           | `ObjectId`   | Identificador del usuario que realizó la reservación.                       |
+| `property_id`       | `ObjectId`   | Identificador de la propiedad reservada.                                    |
+| `host_id`           | `ObjectId`   | Identificador del anfitrión que posee la propiedad.                         |
+| `check_in`          | `Date`       | Fecha y hora de entrada para la reservación.                                |
+| `check_out`         | `Date`       | Fecha y hora de salida para la reservación.                                 |
+| `guests`            | `Number`     | Número de huéspedes incluidos en la reservación.                            |
+| `pets`              | `Number`     | Número de mascotas incluidas en la reservación (si se permiten).            |
+| `created_at`        | `Date`       | Fecha y hora en que se creó la reservación.                                 |
+| `is_active`         | `Boolean`    | Indica si la reservación está actualmente activa.                           |
+
+---
+
+### Ejemplo Completo
+
+```json
+{
+    "_id": ObjectId("679ecc009d413f3541bf6418"),
+    "payment_id": ObjectId("679ecc0d10e1515ca8a98b9b"),
+    "booking_id": ObjectId("679ecc1d9aec8d0be6d6b2ae"),
+    "user_id": ObjectId("679ecc238b3cd3b125cb5a3a"),
+    "property_id": ObjectId("679ecc29c290875876a75174"),
+    "host_id": ObjectId("679ecc2e96733878c93984f1"),
+    "check_in": ISODate("2022-01-15T00:00:00Z"),
+    "check_out": ISODate("2022-01-20T00:00:00Z"),
+    "guests": 2,
+    "pets": 0,
+    "created_at": ISODate("2022-01-15T00:00:00Z"),
+    "is_active": true
+}
+```

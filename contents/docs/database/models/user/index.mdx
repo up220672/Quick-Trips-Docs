@@ -19,7 +19,7 @@ description: Representa un modelo de Usuario, diseñado para almacenar informaci
     "profile_picture": "https://placehold.co/150x150.png",
     "date_of_birth": ISODate("2023-10-05T14:30:00Z"),
     "language": "es",
-    "address": address(),
+    "address": Address(),
     "currency": "MXN",
     "created_at": ISODate("2023-10-05T14:30:00Z"),
     "last_login": ISODate("2023-10-05T14:30:00Z"),
@@ -33,8 +33,12 @@ description: Representa un modelo de Usuario, diseñado para almacenar informaci
     "criminal_record_certificate": "https://www.orimi.com/pdf-test.pdf",
     "is_criminal_record_certificate_verified": true,
     "properties": [
-        Property(),
-        Property()
+        ObjectId("67a11bc67b9828b779671839"),
+        ObjectId("67a11bcd8b0e89b2251d9f66")
+    ],
+    "notifications": [
+        Notification(),
+        Notification()
     ]
 }
 ```
@@ -97,6 +101,7 @@ Estos usuarios se utilizan para administrar la plataforma. Por lo tanto, no se r
 - `is_proof_of_residence_verified`
 - `criminal_record_certificate`
 - `is_criminal_record_certificate_verified`
+- `notifications`
 
 #### Rol 1: Host
 
@@ -105,6 +110,7 @@ Estos usuarios se utilizan para administrar la plataforma. Por lo tanto, no se r
 - `tax_document`
 - `is_tax_document_verified`
 - `properties`
+- `notifications`
 
 
 ### Campos  
@@ -136,4 +142,85 @@ Estos usuarios se utilizan para administrar la plataforma. Por lo tanto, no se r
 | `is_proof_of_residence_verified`| `Boolean` | Indica si el comprobante de domicilio del usuario ha sido verificado.                        |
 | `criminal_record_certificate`  | `String`   | URL del certificado de antecedentes no penales del usuario.                                  |
 | `is_criminal_record_certificate_verified`| `Boolean` | Indica si el certificado de antecedentes no penales del usuario ha sido verificado.    |
-| `properties`                   | `Array`    | Lista de propiedades asociadas con el usuario.  Ver [Property](/docs/database/models/property).|
+| `properties`                   | `Array`    | Arreglo de identificadores de las propiedades asociadas al usuario. Ver [Property](/docs/database/models/property)                        |
+| `notifications`                | `Array`    | Arreglo de notificaciones asociadas al usuario. Ver [Notification](/docs/database/models/secondary-models/notification)                        |
+
+
+### Ejemplo completo  
+
+```json
+{
+    "_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e6"),
+    "username": "juanperez",
+    "first_name": "Juan",
+    "last_name": "Pérez",
+    "description_markdown": "Hola, soy Juan, un viajero apasionado que disfruta conocer nuevas culturas y lugares.",
+    "email": "juan@example.com",
+    "phone": "+521234567890",
+    "password_hash": "68efa2a44f66ee921ea728ece5371940d41ac3b5",
+    "role": 2,
+    "profile_picture": "https://placehold.co/150x150.png",
+    "date_of_birth": ISODate("2023-10-05T14:30:00Z"),
+    "language": "es",
+    "address": {
+        "_id" : ObjectId("679ecc574a0b21152f65a611"),
+        "street": "Calle Falsa 123",
+        "exterior_number": "123",
+        "interior_number": "A",
+        "neighborhood": "Narvarte",
+        "city": "CDMX",
+        "state": "CDMX",
+        "postal_code": "03020",
+        "country": "México",
+        "references": "Entre Calles Verdadera y Ficticia, cerca del parque",
+        "latitude": 19.4326077,
+        "longitude": -99.133208
+    },
+    "currency": "MXN",
+    "created_at": ISODate("2023-10-05T14:30:00Z"),
+    "last_login": ISODate("2023-10-05T14:30:00Z"),
+    "is_active": true,
+    "identity_document": "https://www.orimi.com/pdf-test.pdf",
+    "is_identity_document_verified": true,
+    "tax_document": "https://www.orimi.com/pdf-test.pdf",
+    "is_tax_document_verified": true,
+    "proof_of_residence": "https://www.orimi.com/pdf-test.pdf",
+    "is_proof_of_residence_verified": true,
+    "criminal_record_certificate": "https://www.orimi.com/pdf-test.pdf",
+    "is_criminal_record_certificate_verified": true,
+    "properties": [
+        ObjectId("67a11bc67b9828b779671839"),
+        ObjectId("67a11bcd8b0e89b2251d9f66")
+    ],
+    "notifications": [
+        {
+            "_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e6"),
+            "user_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e7"),
+            "type": "booking_confirmation",
+            "title": "Booking Confirmed",
+            "icon" : "https://example.com/notification-icon.png",
+            "message": "Your booking for Property XYZ has been confirmed.",
+            "is_read": false,
+            "type" : "booking",
+            "id" : "64f8e4b2e4b0a1a2b3c4d5e8",
+            "long_message": "Your booking for Property XYZ has been confirmed. You can view the details by clicking the link below.",
+            "created_at": ISODate("2023-10-05T14:30:00Z"),
+            "updated_at": ISODate("2023-10-05T14:30:00Z")
+        },
+        {
+            "_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e6"),
+            "user_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e7"),
+            "type": "booking_confirmation",
+            "title": "Booking Confirmed",
+            "icon" : "https://example.com/notification-icon.png",
+            "message": "Your booking for Property XYZ has been confirmed.",
+            "is_read": false,
+            "type" : "booking",
+            "id" : "64f8e4b2e4b0a1a2b3c4d5e8",
+            "long_message": "Your booking for Property XYZ has been confirmed. You can view the details by clicking the link below.",
+            "created_at": ISODate("2023-10-05T14:30:00Z"),
+            "updated_at": ISODate("2023-10-05T14:30:00Z")
+        }
+    ]
+}
+```

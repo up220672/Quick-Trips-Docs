@@ -68,6 +68,12 @@ export const ROUTES: EachRoute[] = [
         ],
       },
     ]
+  },
+  {
+    title: "Api",
+    href: "/api",
+    items: [
+      { title: "User", href: "/user" },        ],
   }
 ];
 

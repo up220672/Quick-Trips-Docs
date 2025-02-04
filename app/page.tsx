@@ -22,7 +22,7 @@ export default function Home() {
           Get Started
         </Link>
         <Link
-          href="/api-reference"
+          href="/docs/api"
           className={buttonVariants({
             variant: "secondary",
             className: "px-6",

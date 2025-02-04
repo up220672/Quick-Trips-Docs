@@ -1,0 +1,88 @@
+---
+title: User  
+description: Peticiones relacionadas con User
+---
+
+
+### Crear un nuevo usuario
+
+**( CREATE | POST )**
+
+Crea un nuevo usuario en la base de datos.
+
+- **URL**: `/user`
+
+- **Parámetros**:
+  - **Body** (JSON):
+    ```json
+    {
+        "username": "juanperez",
+        "first_name": "Juan",
+        "last_name": "Pérez",
+        "email": "juan@example.com",
+        "phone": "+521234567890",
+        "password_hash": "68efa2a44f66ee921ea728ece5371940d41ac3b5",
+        "date_of_birth": ISODate("2023-10-05T14:30:00Z"),
+        "language": "es",
+        "address": {
+            "street": "Calle Falsa 123",
+            "exterior_number": "123",
+            "interior_number": "A",
+            "neighborhood": "Narvarte",
+            "city": "CDMX",
+            "state": "CDMX",
+            "postal_code": "03020",
+            "country": "México",
+            "references": "Entre Calles Verdadera y Ficticia, cerca del parque",
+        },
+        "currency": "MXN"
+    }
+    ```
+- **Respuesta exitosa**:
+  - **Código**: `201 Created`
+  - **Body** (JSON):
+    ```json
+    {
+        "username": "juanperez",
+        "first_name": "Juan",
+        "last_name": "Pérez",
+        "description_markdown": null,
+        "email": "juan@example.com",
+        "phone": "+521234567890",
+        "password_hash": "68efa2a44f66ee921ea728ece5371940d41ac3b5",
+        "role": null,
+        "profile_picture": null,
+        "date_of_birth": "2023-10-05T14:30:00.000Z",
+        "language": "es",
+        "address": {
+            "street": "Calle Falsa 123",
+            "exterior_number": "123",
+            "interior_number": "A",
+            "neighborhood": "Narvarte",
+            "city": "CDMX",
+            "state": "CDMX",
+            "postal_code": "03020",
+            "country": "México",
+            "references": "Entre Calles Verdadera y Ficticia, cerca del parque",
+            "latitude": null,
+            "longitude": null,
+            "_id": "67a162e22332616556e99b71"
+        },
+        "currency": "MXN",
+        "is_active": null,
+        "identity_document": null,
+        "is_identity_document_verified": null,
+        "tax_document": null,
+        "is_tax_document_verified": null,
+        "proof_of_residence": null,
+        "is_proof_of_residence_verified": null,
+        "criminal_record_certificate": null,
+        "is_criminal_record_certificate_verified": null,
+        "properties": [],
+        "_id": "67a162e22332616556e99b70",
+        "created_at": "2025-02-04T00:44:18.772Z",
+        "last_login": "2025-02-04T00:44:18.772Z",
+        "notifications": []
+    }
+    ```
+

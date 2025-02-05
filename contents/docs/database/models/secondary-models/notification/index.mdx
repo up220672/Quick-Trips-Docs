@@ -15,13 +15,12 @@ description: Representa un modelo de Notificación, diseñado para almacenar inf
 {
     "_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e6"),
     "user_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e7"),
-    "type": "booking_confirmation",
     "title": "Booking Confirmed",
     "icon" : "https://example.com/notification-icon.png",
     "message": "Your booking for Property XYZ has been confirmed.",
     "is_read": false,
-    "type" : "booking",
-    "id" : "64f8e4b2e4b0a1a2b3c4d5e8",
+    "entity_type" : "booking",
+    "entity_id" : "64f8e4b2e4b0a1a2b3c4d5e8",
     "long_message": "Your booking for Property XYZ has been confirmed. You can view the details by clicking the link below.",
     "created_at": ISODate("2023-10-05T14:30:00Z"),
     "updated_at": ISODate("2023-10-05T14:30:00Z")
@@ -34,13 +33,12 @@ description: Representa un modelo de Notificación, diseñado para almacenar inf
 |---------------------|--------------|-----------------------------------------------------------------------------|
 | `_id`               | `ObjectId`   | Identificador único del documento de notificación.                            |
 | `user_id`           | `ObjectId`   | Identificador del usuario que recibirá la notificación.                   |
-| `type`              | `String`     | Tipo de notificación (e.g., "booking_confirmation", "payment_update").      |
 | `title`             | `String`     | Título de la notificación (e.g., "Booking Confirmed").                      |
 | `icon`              | `String`     | URL del icono que representa la notificación.                              |
 | `message`           | `String`     | Contenido corto del mensaje de la notificación.                                  |
 | `is_read`           | `Boolean`    | Indica si la notificación ha sido leída por el usuario.               |
-| `type`              | `String`     | Tipo de entidad relacionada (e.g., "booking", "payment"). Ver [Routes](docs/database/catalogs/routes)                      |
-| `id`                | `String`     | Identificador de la entidad relacionada (e.g., booking ID, payment ID).            |
+| `entity_type`       | `String`     | Tipo de entidad relacionada (e.g., "booking", "payment"). Ver [Routes](docs/database/catalogs/routes)                      |
+| `entity_id`         | `String`     | Identificador de la entidad relacionada (e.g., booking ID, payment ID).            |
 | `long_message`      | `String`     | Contenido detallado del mensaje de la notificación.                               |
 | `created_at`        | `Date`       | Fecha y hora en que se creó la notificación.                            |
 | `updated_at`        | `Date`       | Fecha y hora en que se actualizó la notificación por última vez.                       |

@@ -1,34 +1,95 @@
 ---
-title: Booking  
+title: Booking Model
 description: Representa un modelo de Reservación, diseñado para almacenar información detallada sobre cada vez que un huésped realiza una reserva de una propiedad.
 ---
 
-### Modelo
 
-```json
-{
-    "_id": ObjectId("67a11af7f65cde31c4b7b9c6"),
-    "payment_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "booking_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "user_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "property_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "host_id": ObjectId("679eb2e10674ac227ab940f9"),
-    "check_in": ISODate("2022-01-15T00:00:00Z"),
-    "check_out": ISODate("2022-01-20T00:00:00Z"),
-    "guests": 2,
-    "pets": 0,
-    "created_at": ISODate("2022-01-15T00:00:00Z"),
-    "is_active": true
-}
+## Schema
+
+El esquema `Booking` se define utilizando Mongoose, una herramienta de modelado de objetos MongoDB para Node.js. A continuación se muestra la definición del esquema:
+
+```javascript
+const mongoose = require('mongoose');
+
+const BookingSchema = new mongoose.Schema({
+  current_payment_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Payment',
+    required: true,
+    default: null
+  },
+  payment_history: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payment',
+      required: true,
+      default: null
+    },
+  ],
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+    default: null
+  },
+  property_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Property',
+    required: true,
+    default: null
+  },
+  host_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+    default: null
+  },
+  check_in: {
+    type: Date,
+    required: true,
+    default: null
+  },
+  check_out: {
+    type: Date,
+    required: true,
+    default: null
+  },
+  guests: {
+    type: Number,
+    required: true,
+    default: 1,
+    min: 1
+  },
+  pets: {
+    type: Number,
+    required: false,
+    default: 0,
+    min: 0
+  },
+  created_at: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  is_active: {
+    type: Boolean,
+    required: true,
+    default: true
+  }
+}, { versionKey: false });
+
+const Booking = mongoose.model('Booking', BookingSchema);
+
+module.exports = { Booking, BookingSchema };
 ```
 
-### Campos
+## Campos del Modelo
 
 | Campo               | Tipo         | Descripción                                                                 |
 |---------------------|--------------|-----------------------------------------------------------------------------|
 | `_id`               | `ObjectId`   | Identificador único del documento de reservación.                           |
-| `payment_id`        | `ObjectId`   | Identificador único de la transacción de pago asociada a la reservación.    |
-| `booking_id`        | `ObjectId`   | Identificador único de la reservación.                                      |
+| `current_payment_id`| `ObjectId`   | Identificador único de la transacción de pago actual asociada a la reservación. |
+| `payment_history`   | `Array`      | Historial de identificadores de transacciones de pago asociadas a la reservación. |
 | `user_id`           | `ObjectId`   | Identificador del usuario que realizó la reservación.                       |
 | `property_id`       | `ObjectId`   | Identificador de la propiedad reservada.                                    |
 | `host_id`           | `ObjectId`   | Identificador del anfitrión que posee la propiedad.                         |
@@ -39,15 +100,15 @@ description: Representa un modelo de Reservación, diseñado para almacenar info
 | `created_at`        | `Date`       | Fecha y hora en que se creó la reservación.                                 |
 | `is_active`         | `Boolean`    | Indica si la reservación está actualmente activa.                           |
 
----
-
-### Ejemplo Completo
+## Ejemplo Completo
 
 ```json
 {
     "_id": ObjectId("679ecc009d413f3541bf6418"),
-    "payment_id": ObjectId("679ecc0d10e1515ca8a98b9b"),
-    "booking_id": ObjectId("679ecc1d9aec8d0be6d6b2ae"),
+    "current_payment_id": ObjectId("679ecc0d10e1515ca8a98b9b"),
+    "payment_history": [
+        ObjectId("679ecc0d10e1515ca8a98b9b")
+    ],
     "user_id": ObjectId("679ecc238b3cd3b125cb5a3a"),
     "property_id": ObjectId("679ecc29c290875876a75174"),
     "host_id": ObjectId("679ecc2e96733878c93984f1"),

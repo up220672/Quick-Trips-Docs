@@ -1,13 +1,111 @@
 ---
-title: Address  
+title: Address Model
 description: Representa un modelo de dirección, diseñado para almacenar información detallada sobre una ubicación física.
 ---
 
-### Modelo
+## Schema
+
+El esquema `Address` se define utilizando Mongoose, una herramienta de modelado de objetos MongoDB para Node.js. A continuación se muestra la definición del esquema:
+
+```javascript
+const mongoose = require('mongoose');
+
+const AddressSchema = new mongoose.Schema({
+  street: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  exterior_number: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  interior_number: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  neighborhood: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  city: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  state: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  postal_code: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  country: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  references: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  latitude: { 
+    type: Number, 
+    required: false,
+    default: null 
+  },
+  longitude: { 
+    type: Number, 
+    required: false,
+    default: null 
+  }
+}, { versionKey: false });
+
+const Address = mongoose.model('Address', AddressSchema);
+
+module.exports = { Address, AddressSchema };
+```
+
+## Campos del Modelo
+
+| Campo             | Tipo     | Descripción                                                               |
+|------------------|----------|---------------------------------------------------------------------------|
+| `_id`           | `ObjectId` | Identificador único del documento de dirección.                          |
+| `street`        | `String`   | Nombre de la calle o avenida donde se encuentra la dirección.            |
+| `exterior_number` | `String`   | Número exterior del edificio o casa.                                    |
+| `interior_number` | `String`   | Número interior del departamento o casa.                                |
+| `neighborhood`  | `String`   | Nombre de la colonia o barrio donde se encuentra la dirección.           |
+| `city`         | `String`   | Nombre de la ciudad donde se encuentra la dirección.                     |
+| `state`        | `String`   | Nombre del estado o provincia donde se encuentra la dirección.           |
+| `postal_code`  | `String`   | Código Postal de la dirección.                                           |
+| `country`      | `String`   | Nombre del país donde se encuentra la dirección.                         |
+| `references`   | `String`   | Información adicional para ubicar la dirección.                         |
+| `latitude`     | `Number`   | Coordenada de latitud de la dirección.                                   |
+| `longitude`    | `Number`   | Coordenada de longitud de la dirección.                                  |
+
+---
+
+## Ejemplo Completo
 
 ```json
 {
-    "_id" : ObjectId("679ecc574a0b21152f65a611"),
+    "_id": ObjectId("679ecc574a0b21152f65a611"),
     "street": "Calle Falsa 123",
     "exterior_number": "123",
     "interior_number": "A",
@@ -21,20 +119,3 @@ description: Representa un modelo de dirección, diseñado para almacenar inform
     "longitude": -99.133208
 }
 ```
-
-### Campos
-
-| Campo               | Tipo     | Descripción                                                                 |
-|---------------------|----------|-----------------------------------------------------------------------------|
-| `_id`               | `ObjectId` | Identificador único del objeto.                                           |
-| `street`            | `String` | Nombre de la calle o avenida donde se encuentra la dirección.              |
-| `exterior_number`   | `String` | Número exterior del edificio o casa.                                       |
-| `interior_number`   | `String` | Número interior del departamento o casa.                                   |
-| `neighborhood`      | `String` | Nombre de la colonia o barrio donde se encuentra la dirección.             |
-| `city`              | `String` | Nombre de la ciudad donde se encuentra la dirección.                      |
-| `state`             | `String` | Nombre del estado o provincia donde se encuentra la dirección.             |
-| `postal_code`       | `String` | Código Postal de la dirección.                                             |
-| `country`           | `String` | Nombre del país donde se encuentra la dirección.                          |
-| `references`        | `String` | Información adicional para ubicar la dirección, como referencias de ubicación. |
-| `latitude`          | `Number` | Coordenada de latitud de la dirección.                                      |
-| `longitude`         | `Number` | Coordenada de longitud de la dirección.                                     |

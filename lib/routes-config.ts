@@ -72,6 +72,7 @@ export const ROUTES: EachRoute[] = [
   {
     title: "Api",
     href: "/api",
+    "noLink": true,
     items: [
       { title: "User", href: "/user" },        ],
   }

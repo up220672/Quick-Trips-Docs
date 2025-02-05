@@ -1,103 +1,227 @@
 ---
-title: Property
-description: Representa un modelo de Propiedad, diseñado para almacenar información detallada sobre una propiedad disponible para alquiler en QuickTrips.
+title: Property Model
+description: El modelo `Property` está diseñado para almacenar información detallada sobre una propiedad disponible para alquiler en la plataforma QuickTrips.
 ---
 
-**Nota**: Aunque la propiedad sea elimina por el usuario, y ya no aparezca en busquedas, las reseñas de estás seguirán apareciendo en el perfil del host.
+El modelo `Property` está diseñado para almacenar información detallada sobre una propiedad disponible para alquiler en la plataforma QuickTrips. Este documento proporciona una guía completa sobre la estructura y el uso del modelo `Property`.
 
-### Modelo
+**Nota:** Aunque una propiedad sea eliminada por el usuario y ya no aparezca en las búsquedas, las reseñas asociadas a dicha propiedad seguirán apareciendo en el perfil del host.
 
-```json
-{
-    "_id": ObjectId("679f9ca80ef3fe3060dce2d2"),
-    "is_active": true,
-    "type": 1,
-    "title" : "Departamento en la Condesa",
-    "markdown_description": "Hermoso departamento en la Condesa, cerca de restaurantes y bares. \n Totalmente amueblado y equipado.",
-    "max_guests": 4,
-    "max_babies": 1,
-    "proof_of_address" : "https://www.orimi.com/pdf-test.pdf",
-    "is_proof_of_address_verified" : false,
-    "land_use_permit" : "https://www.orimi.com/pdf-test.pdf",
-    "is_land_use_permit_verified" : false,
-    "bedrooms": [
-        Bedroom(),
-        Bedroom(),
-    ],
-    "kitchens": [
-        Kitchen(),
-    ],
-    "bathrooms": [
-        Bathroom(),
-    ],
-    "width": 4.5,
-    "length": 5.5,
-    "address": Address(),
-    "photos": [
-        Photo(),
-        Photo(),
-    ],
-    "videos": [
-        Video(),
-        Video(),
-    ],
-    "views": 1000,
-    "amenities": PropertyAmenities(),
-    "check_in": 930,
-    "check_out": 540,
-    "min_stay_nights": 1,
-    "max_stay_nights": 5,
-    "price_per_night": 100.00,
-    "currency": "MXN",
-    "rules": [
-        "No fumar",
-        "No mascotas"
-    ],
-    "preparation_days_time_between_stays" : 1,
-    "reviews": [
-        Review(),
-        Review(),
-    ]
+## Schema
 
-}
+El esquema `Property` se define utilizando Mongoose, una herramienta de modelado de objetos MongoDB para Node.js. A continuación se muestra la definición del esquema:
+
+```javascript
+const mongoose = require('mongoose');
+const { PropertyAmenities } = require('./secondary_models/propertyAmenities');
+const { Address } = require('./secondary_models/address');
+const AddressSchema = require('./secondary_models/address').AddressSchema;
+const PhotoSchema = require('./secondary_models/photo').PhotoSchema;
+const VideoSchema = require('./secondary_models/video').VideoSchema;
+const BedroomSchema = require('./secondary_models/bedroom').BedroomSchema;
+const KitchenSchema = require('./secondary_models/kitchen').KitchenSchema;
+const BathroomSchema = require('./secondary_models/bathroom').BathroomSchema;
+const PropertyAmenitiesSchema = require('./secondary_models/propertyAmenities').PropertyAmenitiesSchema;
+const ReviewSchema = require('./secondary_models/review').ReviewSchema;
+
+const PropertySchema = new mongoose.Schema({
+  is_active: { 
+    type: Boolean, 
+    required: false,
+    default: true 
+  },
+  type: { 
+    type: Number, 
+    required: true 
+  },
+  title: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  markdown_description: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  max_guests: { 
+    type: Number, 
+    required: true,
+    min: 1 
+  },
+  max_babies: { 
+    type: Number, 
+    required: false,
+    default: null,
+    min: 0 
+  },
+  proof_of_address: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  is_proof_of_address_verified: { 
+    type: Boolean, 
+    required: false,
+    default: null 
+  },
+  land_use_permit: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  is_land_use_permit_verified: { 
+    type: Boolean, 
+    required: false,
+    default: null 
+  },
+  bedrooms: [{ 
+    type: BedroomSchema, 
+    required: false
+  }],
+  kitchens: [{ 
+    type: KitchenSchema, 
+    required: false,
+    default: null 
+  }],
+  bathrooms: [{ 
+    type: BathroomSchema, 
+    required: false
+  }],
+  width: { 
+    type: Number, 
+    required: true,
+    min: 1
+  },
+  length: { 
+    type: Number, 
+    required: true,
+    min: 1
+  },
+  address: { 
+    type: AddressSchema, 
+    required: true,
+    default: Address()
+  },
+  photos: [{ 
+    type: PhotoSchema, 
+    required: false,
+    default: null 
+  }],
+  videos: [{ 
+    type: VideoSchema, 
+    required: false,
+    default: null 
+  }],
+  views: { 
+    type: Number, 
+    required: false,
+    default: 0,
+    min: 0 
+  },
+  amenities: { 
+    type: PropertyAmenitiesSchema, 
+    required: false,
+    default: PropertyAmenities() 
+  },
+  check_in: { 
+    type: Number, 
+    required: true,
+    min: 0,
+    max: 1440 
+  },
+  check_out: { 
+    type: Number, 
+    required: true,
+    min: 0,
+    max: 1440 
+  },
+  min_stay_nights: { 
+    type: Number, 
+    required: true,
+    min: 1 
+  },
+  max_stay_nights: { 
+    type: Number, 
+    required: true,
+    min: 1 
+  },
+  price_per_night: { 
+    type: Number, 
+    required: true,
+    min: 0 
+  },
+  currency: { 
+    type: String, 
+    required: true,
+    trim: true 
+  },
+  rules: [{ 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  }],
+  preparation_days_time_between_stays: { 
+    type: Number, 
+    required: false,
+    default: null,
+    min: 0 
+  },
+  reviews: [{ 
+    type: ReviewSchema, 
+    required: false,
+    default: null 
+  }]
+}, { versionKey: false });
+
+const Property = mongoose.model('Property', PropertySchema);
+
+module.exports = { Property, PropertySchema };
 ```
 
-### Campos
+## Campos del Modelo
 
-| Campo               | Tipo         | Descripción                                                                 |
-|---------------------|--------------|-----------------------------------------------------------------------------|
-| `_id`               | `ObjectId`   | Identificador único del documento de pago.                                  |
-| `is_active`         | `Boolean`    | Si es **False** Significa que el usuario la **"La elimino"**                |
-| `type`              | `Number`     | Tipo de propiedad. Ver [Property Type](/docs/database/catalogs/property-type). |
-| `title`             | `String`     | Título de la propiedad.                                                     |
-| `markdown_description` | `String` | Descripción de la propiedad en formato markdown.                            |
-| `max_guests`        | `Number`     | Número máximo de huéspedes permitidos en la propiedad.                      |
-| `max_babies`        | `Number`     | Número máximo de bebés permitidos en la propiedad.                          |
-| `proof_of_address`  | `String`     | URL del documento que acredita la dirección de la propiedad.               |
-| `is_proof_of_address_verified` | `Boolean` | Si es **False** Significa que el documento no ha sido validado.            |
-| `land_use_permit`   | `String`     | URL del documento que acredita el uso de suelo de la propiedad.            |
-| `is_land_use_permit_verified` | `Boolean` | Si es **False** Significa que el documento no ha sido validado.            |
-| `bedrooms`          | `List`      | Lista de habitaciones de la propiedad. Ver [Bedroom](/docs/database/models/secondary-models/bedroom). |
-| `kitchens`          | `List`      | Lista de cocinas de la propiedad. Ver [Kitchen](/docs/database/models/secondary-models/kitchen). |
-| `bathrooms`         | `List`      | Lista de baños de la propiedad. Ver [Bathroom](/docs/database/models/secondary-models/bathroom). |
-| `width`             | `Number`     | Ancho de la propiedad en metros.                                           |
-| `length`            | `Number`     | Largo de la propiedad en metros.                                           |
-| `address`           | `Object`     | Dirección de la propiedad. Ver [Address](/docs/database/models/secondary-models/address). |
-| `photos`            | `List`      | Lista de fotos de la propiedad. Ver [Photo](/docs/database/models/secondary-models/photo). |
-| `videos`            | `List`      | Lista de videos de la propiedad. Ver [Video](/docs/database/models/secondary-models/video). |
-| `views`             | `Number`     | Número de vistas de la propiedad.                                           |
-| `amenities`         | `Object`     | Amenidades de la propiedad. Ver [Property Amenities](/docs/database/models/secondary-models/property-amenities). |
-| `check_in`          | `Number`     | Hora de check-in en la propiedad en minutos. 930min equivale a 3:30pm  |
-| `check_out`         | `Number`     | Hora de check-out en la propiedad en minutos. 540min equivale a 90:00am  |
-| `min_stay_nights`   | `Number`     | Número mínimo de noches permitidas para reservar la propiedad.            |
-| `max_stay_nights`   | `Number`     | Número máximo de noches permitidas para reservar la propiedad.            |
-| `price_per_night`   | `Number`     | Precio por noche de la propiedad.                                          |
-| `currency`          | `String`     | Moneda en la que se manejan los precios de la propiedad.                   |
-| `rules`             | `List<String>` | Lista de reglas de la propiedad.                                       |
-| `preparation_days_time_between_stays` | `Number` | Tiempo en días que se necesita para preparar la propiedad entre estancias. **Si es 0 se necesitan minimo 5 horas de diferencia entre el último checkout y el próximo checkin**. |
-| `reviews`           | `List`      | Lista de reseñas de la propiedad. Ver [Review](/docs/database/models/secondary-models/review). |
+| Campo                                | Tipo               | Descripción                                                                 |
+|--------------------------------------|--------------------|-----------------------------------------------------------------------------|
+| `_id`                                | `ObjectId`         | Identificador único de la propiedad.                                        |
+| `is_active`                          | `Boolean`          | Si es **false**, significa que el usuario la eliminó.                       |
+| `type`                               | `Number`           | Tipo de propiedad. Ver [Property Type](/docs/database/catalogs/property-type). |
+| `title`                              | `String`           | Título de la propiedad.                                                     |
+| `markdown_description`               | `String`           | Descripción de la propiedad en formato Markdown.                            |
+| `max_guests`                         | `Number`           | Número máximo de huéspedes permitidos en la propiedad.                      |
+| `max_babies`                         | `Number`           | Número máximo de bebés permitidos en la propiedad.                          |
+| `proof_of_address`                   | `String`           | URL del documento que acredita la dirección de la propiedad.                |
+| `is_proof_of_address_verified`       | `Boolean`          | Si es **false**, significa que el documento no ha sido validado.            |
+| `land_use_permit`                    | `String`           | URL del documento que acredita el uso de suelo de la propiedad.             |
+| `is_land_use_permit_verified`        | `Boolean`          | Si es **false**, significa que el documento no ha sido validado.            |
+| `bedrooms`                           | `Array<BedroomSchema>` | Lista de habitaciones de la propiedad. Ver [Bedroom](/docs/database/models/secondary-models/bedroom). |
+| `kitchens`                           | `Array<KitchenSchema>` | Lista de cocinas de la propiedad. Ver [Kitchen](/docs/database/models/secondary-models/kitchen). |
+| `bathrooms`                          | `Array<BathroomSchema>` | Lista de baños de la propiedad. Ver [Bathroom](/docs/database/models/secondary-models/bathroom). |
+| `width`                              | `Number`           | Ancho de la propiedad en metros.                                            |
+| `length`                             | `Number`           | Largo de la propiedad en metros.                                            |
+| `address`                            | `AddressSchema`    | Dirección de la propiedad. Ver [Address](/docs/database/models/secondary-models/address). |
+| `photos`                             | `Array<PhotoSchema>` | Lista de fotos de la propiedad. Ver [Photo](/docs/database/models/secondary-models/photo). |
+| `videos`                             | `Array<VideoSchema>` | Lista de videos de la propiedad. Ver [Video](/docs/database/models/secondary-models/video). |
+| `views`                              | `Number`           | Número de vistas de la propiedad.                                           |
+| `amenities`                          | `PropertyAmenitiesSchema` | Amenidades de la propiedad. Ver [Property Amenities](/docs/database/models/secondary-models/property-amenities). |
+| `check_in`                           | `Number`           | Hora de check-in en minutos (ejemplo: 930 = 15:30).                         |
+| `check_out`                          | `Number`           | Hora de check-out en minutos (ejemplo: 540 = 09:00).                        |
+| `min_stay_nights`                    | `Number`           | Número mínimo de noches permitidas para reservar la propiedad.              |
+| `max_stay_nights`                    | `Number`           | Número máximo de noches permitidas para reservar la propiedad.              |
+| `price_per_night`                    | `Number`           | Precio por noche de la propiedad.                                           |
+| `currency`                           | `String`           | Moneda en la que se manejan los precios de la propiedad.                    |
+| `rules`                              | `Array<String>`    | Lista de reglas de la propiedad.                                            |
+| `preparation_days_time_between_stays`| `Number`           | Tiempo en días necesario para preparar la propiedad entre estancias. Si es **0**, se necesitan al menos 5 horas entre el último checkout y el próximo check-in. |
+| `reviews`                            | `Array<ReviewSchema>` | Lista de reseñas de la propiedad. Ver [Review](/docs/database/models/secondary-models/review). |
+
 
 ### Ejemplo completo
+
 
 ```json
 {

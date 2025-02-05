@@ -1,19 +1,47 @@
 ---
-title: Amount Details  
+title: Amount Details Model 
 description: Representa un modelo de Detalles de Monto, diseñado para almacenar información detallada sobre los montos asociados a una transacción o reserva.
 ---
 
-### Modelo
+### Schema
 
-```json
-{
-    "_id": ObjectId("679ecc6731d3df6f1fe65686"),
-    "subtotal": 200.00,
-    "platformCommission": 30.75,
-    "tax": 20.00,
-    "total": 250.75,
-    "currency": "MXN"
-}
+El modelo `AmountDetails` se implementa utilizando Mongoose y tiene la siguiente definición:
+
+```javascript
+const mongoose = require('mongoose');
+
+const AmountDetailsSchema = new mongoose.Schema({
+  subtotal: { 
+    type: Number, 
+    required: false,
+    default: null 
+  },
+  platformCommission: { 
+    type: Number, 
+    required: false,
+    default: null 
+  },
+  tax: { 
+    type: Number, 
+    required: false,
+    default: null 
+  },
+  total: { 
+    type: Number, 
+    required: false,
+    default: null 
+  },
+  currency: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  }
+}, { versionKey: false });
+
+const AmountDetails = mongoose.model('AmountDetails', AmountDetailsSchema);
+
+module.exports = { AmountDetails, AmountDetailsSchema };
 ```
 
 ### Campos
@@ -27,8 +55,19 @@ description: Representa un modelo de Detalles de Monto, diseñado para almacenar
 | `total`                | `Number`     | Monto final a pagar, incluyendo subtotal, comisión e impuestos.             |
 | `currency`             | `String`     | Moneda en la que se realiza la transacción (ej: "MXN", "USD").              |
 
----
-
 <Note type="danger" title="Moneda">
     El campo `currency` debe seguir el estándar ISO 4217 para códigos de moneda (ej: "MXN" para pesos mexicanos, "USD" para dólares estadounidenses).
 </Note>
+
+### Ejemplo Completo
+
+```json
+{
+    "_id": ObjectId("679ecc6731d3df6f1fe65686"),
+    "subtotal": 200.00,
+    "platformCommission": 30.75,
+    "tax": 20.00,
+    "total": 250.75,
+    "currency": "MXN"
+}
+```

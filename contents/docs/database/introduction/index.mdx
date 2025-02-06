@@ -1,6 +1,6 @@
 ---
 title: Introducción  
-description: En esta sección, se proporciona una descripción detallada de la estructura y el funcionamiento de la base de datos de QuickTrips. Se explican aspectos clave como el motor de base de datos utilizado, los modelos de datos, las relaciones entre los mismos y los tipos de consultas que se pueden realizar.
+description: En esta sección, se proporciona una descripción detallada de la estructura y el funcionamiento de la base de datos de QuickTrips. Se explican aspectos clave como el motor de base de datos utilizado, los esquemas de datos, las relaciones entre los mismos y los tipos de consultas que se pueden realizar.
 ---
 
 ![Mongo Database Logo | 50 ](/images/mongodb.png)
@@ -9,7 +9,7 @@ description: En esta sección, se proporciona una descripción detallada de la e
 
 ## Colecciones
 
-En la base de datos de QuickTrips, los datos se organizan en tres categorías principales: **Colecciones de Catálogo**, **Colecciones Principales** y **Modelos Incrustados**. A continuación, se describen estas categorías en detalle.
+En la base de datos de QuickTrips, los datos se organizan en tres categorías principales: **Colecciones de Catálogo**, **Colecciones Principales** y **Esquemas Incrustados**. A continuación, se describen estas categorías en detalle.
 
 ### Colecciones de Catálogo
 
@@ -21,10 +21,10 @@ Las **colecciones de catálogo** contienen información de referencia que no se 
 
 Las **colecciones principales** son el núcleo de la base de datos y representan los elementos más críticos en términos de funcionalidad y operaciones de negocio. Estas entidades son gestionadas activamente por los usuarios a través de la interfaz de la aplicación y contienen datos que se actualizan regularmente. Ejemplos:
 
-- **Usuarios**: Es una lista que contiene modelos de tipo **Usuario**. El modelo usuario incluye información personal, datos de acceso, entre otros.
+- **Usuarios**: Es una lista que contiene esquemas de tipo **Usuario**. El esquema usuario incluye información personal, datos de acceso, entre otros.
 
-### Modelos Incrustados
+### Esquemas Incrustados (Schemas)
 
-Los **modelos incrustados** complementan a las entidades principales al almacenar información adicional que enriquece los datos sin tener un propósito independiente. Estas estructuras anidadas están diseñadas para proporcionar detalles relacionados con las entidades principales y facilitar su gestión sin necesidad de crear colecciones separadas. Ejemplo:
+Los **esquemas incrustados** complementan a las entidades principales al almacenar información adicional que enriquece los datos sin tener un propósito independiente. Estas estructuras anidadas están diseñadas para proporcionar detalles relacionados con las entidades principales y facilitar su gestión sin necesidad de crear colecciones separadas. Ejemplo:
 
 - **Dirección**: Almacena detalles como la calle, colonia, número, estado y país de los usuarios o ubicaciones asociadas.

@@ -1,43 +1,49 @@
 ---
-title: Installation
-description: Installation guide for our application.
+title: Instalación
+description: Guía de instalación de QuickTrips.
 ---
 
-Setting up AriaDocs is straightforward, with options to clone the repository or use the convenient `npx` command. AriaDocs requires [Node.js](https://nodejs.org/) version 18 or higher for optimal performance.
+Configurar **QuickTrips** es un proceso sencillo. Puedes clonar el repositorio o configurarlo manualmente siguiendo los pasos a continuación. Asegúrate de tener instalada la versión 16 o superior de [Node.js](https://nodejs.org/) y [MongoDB](https://www.mongodb.com/).
 
-## Clone Repository
-To get started, you can clone the AriaDocs repository directly from GitHub. 
+## Clonar el Repositorio
+Para comenzar, clona el repositorio de **QuickTrips** desde GitHub.
+
 <Stepper>
-  <StepperItem title="Step 1: Clone the AriaDocs Repository">
-    Begin by cloning the AriaDocs repository from GitHub:
+  <StepperItem title="Paso 1: Clonar el Repositorio de QuickTrips">
+    Clona el repositorio ejecutando el siguiente comando:
 
     ```plaintext
-    git clone https://github.com/nisabmohd/Aria-Docs.git
+    git clone https://github.com/tuusuario/quicktrips.git
     ```
   </StepperItem>
 
-  <StepperItem title="Step 2: Access the Project Directory">
-    After cloning, navigate into the project directory to start setting up:
+  <StepperItem title="Paso 2: Acceder al Directorio del Proyecto">
+    Luego de clonar, navega dentro del directorio del proyecto:
 
     ```plaintext
-    cd Aria-Docs
+    cd quicktrips
     ```
   </StepperItem>
 
-  <StepperItem title="Step 3: Install Required Dependencies">
-    Install all necessary project dependencies with npm:
-
-    <Note title="Remember">
-      To support React 19, package maintainers will need to test and update their packages to include React 19 as a peer dependency. This is already in progress.
-    </Note>
+  <StepperItem title="Paso 3: Instalar Dependencias Requeridas">
+    Instala todas las dependencias necesarias con npm:
 
     ```plaintext
     npm install
     ```
   </StepperItem>
 
-  <StepperItem title="Step 4: Launch the Development Server">
-    Finally, start the development server to view the project locally:
+  <StepperItem title="Paso 4: Configurar Variables de Entorno">
+    Crea un archivo `.env` en la raíz del proyecto y añade las variables de entorno necesarias:
+
+    ```plaintext
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_secret_key
+    ```
+  </StepperItem>
+
+  <StepperItem title="Paso 5: Iniciar el Servidor de Desarrollo">
+    Finalmente, ejecuta el siguiente comando para iniciar el servidor:
 
     ```plaintext
     npm run dev
@@ -45,28 +51,28 @@ To get started, you can clone the AriaDocs repository directly from GitHub.
   </StepperItem>
 </Stepper>
 
-## Quick Setup with npx
+## Configuración Rápida con npx
 
-For a faster setup, use the `npx` command to create a new AriaDocs project in one step:
+Para una instalación más rápida, usa el siguiente comando `npx`:
 
 ```plaintext
-npx create-aria-doc <project-directory>
+npx create-quicktrips <directorio-del-proyecto>
 ```
 
-**Command Output:**
+**Salida esperada:**
 
 ```plaintext
-Creating a new AriaDocs project in /path/to/your/project from the master branch...
-Cloning Master (Full Documentation)...
-AriaDocs project successfully created in /path/to/your/project!
+Creando un nuevo proyecto QuickTrips en /ruta/del/proyecto...
+Clonando repositorio...
+QuickTrips se ha configurado correctamente en /ruta/del/proyecto.
 
-Next steps:
-1. Navigate to your project directory:
-   cd <project-directory>
-2. Install dependencies:
+Pasos siguientes:
+1. Navegar al directorio del proyecto:
+   cd <directorio-del-proyecto>
+2. Instalar dependencias:
    npm install
-3. Start the development server:
+3. Iniciar el servidor de desarrollo:
    npm run dev
 ```
 
-With this setup, you’ll have a ready-to-use AriaDocs instance to start building your documentation.
+Con este proceso, tendrás **QuickTrips** listo para empezar a gestionar alojamientos y reservas. 🚀

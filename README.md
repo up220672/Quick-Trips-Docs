@@ -1,6 +1,6 @@
 # QuickTrips Documentation
 
-Welcome to the **QuickTrips Documentation**! This repository contains detailed information about the structure, models, and functionality of the QuickTrips platform. QuickTrips is a modern and scalable platform designed to facilitate property rentals, offering users a seamless experience for booking accommodations and managing their stays.
+Welcome to the **QuickTrips Documentation**! This repository contains detailed information about the structure, Schema, and functionality of the QuickTrips platform. QuickTrips is a modern and scalable platform designed to facilitate property rentals, offering users a seamless experience for booking accommodations and managing their stays.
 
 Go to [QuickTrips](https://github.com/ISC-UPA/2025-1-ISC07A-QuickTrips)
 
@@ -11,7 +11,7 @@ Go to [QuickTrips](https://github.com/ISC-UPA/2025-1-ISC07A-QuickTrips)
 1. [Introduction](#introduction)
 2. [Database Structure](#database-structure)
    - [Collections](#collections)
-   - [Models](#models)
+   - [Schema](#Schema)
 3. [Features](#features)
 
 
@@ -25,7 +25,7 @@ QuickTrips is built to provide a robust and user-friendly platform for property 
 
 ## Database Structure
 
-The QuickTrips database is organized into **collections** and **models**, each designed to store specific types of data. Below is an overview of the main components:
+The QuickTrips database is organized into **collections** and **Schema**, each designed to store specific types of data. Below is an overview of the main components:
 
 ### Collections
 
@@ -36,7 +36,7 @@ The QuickTrips database is organized into **collections** and **models**, each d
 5. **Reviews**: Stores user reviews and ratings for properties.
 6. **Amenities**: Defines the features and services available in properties.
 
-### Models
+### Schema
 
 - **User**: Represents a platform user with fields for personal information, preferences, and activity.
 - **Property**: Describes a rental property, including its features, location, and availability.

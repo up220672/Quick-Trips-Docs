@@ -1,0 +1,87 @@
+---
+title: Card Payment Method Schema
+description: Representa un esquema de Método de Pago con Tarjeta, diseñado para almacenar información detallada sobre los métodos de pago con tarjeta de crédito o débito de los usuarios. Solo se almacenan datos no sensibles para garantizar la seguridad.
+---
+
+### Schema
+
+```javascript
+const mongoose = require('mongoose');
+const { Address } = require('./address');
+const AddressSchema = require('./address').AddressSchema;
+
+const CardPaymentMethodSchema = new mongoose.Schema({
+  name: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  last4: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true,
+    minlength: 4,
+    maxlength: 4 
+  },
+  card_type: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  expiration_date: { 
+    type: String, 
+    required: false,
+    default: null,
+    trim: true 
+  },
+  address: { 
+    type: AddressSchema, 
+    required: false,
+    default: Address()
+  }
+}, { versionKey: false });
+
+const CardPaymentMethod = mongoose.model('CardPaymentMethod', CardPaymentMethodSchema);
+
+module.exports = { CardPaymentMethod, CardPaymentMethodSchema };
+```
+
+### Campos
+
+| Campo               | Tipo         | Descripción                                                                       |
+|---------------------|--------------|-----------------------------------------------------------------------------------|
+| `_id`               | `ObjectId`   | Identificador único del documento de método de pago.                              |
+| `name`              | `String`     | Nombre del titular de la tarjeta. Si no se proporciona, el valor por defecto es `null`. Se eliminan los espacios en blanco al principio y al final del nombre. |
+| `last4`             | `String`     | Últimos 4 dígitos de la tarjeta. Si no se proporciona, el valor por defecto es `null`. Debe tener exactamente 4 caracteres. |
+| `card_type`         | `String`     | Tipo de tarjeta (ej: Visa, Mastercard, American Express). Si no se proporciona, el valor por defecto es `null`. Se eliminan los espacios en blanco al principio y al final del tipo de tarjeta. |
+| `expiration_date`   | `String`     | Fecha de expiración de la tarjeta en formato MM/YY. Si no se proporciona, el valor por defecto es `null`. Se eliminan los espacios en blanco al principio y al final de la fecha. |
+| `address`           | `Address`    | Dirección de facturación asociada a la tarjeta. Si no se proporciona, se utiliza un objeto `Address` por defecto. Ver [Address](/docs/database/schemas/secondary-schemas/address). |
+
+### Notas adicionales
+
+- **`versionKey: false`**: Este parámetro en el esquema de Mongoose desactiva la inclusión del campo `__v` que Mongoose añade por defecto para controlar la versión del documento.
+- **`trim: true`**: Este parámetro en los campos `name`, `last4`, `card_type` y `expiration_date` asegura que cualquier espacio en blanco al principio o al final del texto sea eliminado antes de guardarlo en la base de datos.
+- **`minlength: 4` y `maxlength: 4`**: Estos parámetros en el campo `last4` aseguran que el valor tenga exactamente 4 caracteres.
+- **`default: Address()`**: Este parámetro en el campo `address` asegura que si no se proporciona una dirección, se utilizará un objeto `Address` por defecto.
+
+### Ejemplo de Documento
+
+```json
+{
+    "_id": ObjectId("679ecc761a3e63fcc4a6a3ac"),
+    "name": "John Doe",
+    "last4": "1111",
+    "card_type": "Visa",
+    "expiration_date": "12/25",
+    "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "postal_code": "10001",
+        "country": "USA"
+    }
+}
+```

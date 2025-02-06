@@ -1,0 +1,40 @@
+---
+title: Bathroom  
+description: Representa un esquema de Baño, diseñado para almacenar información detallada sobre las características y servicios de un baño en una propiedad.
+---
+
+### Schema
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7318"),
+    "name": "Baño Principal",
+    "privacy" : 0,
+    "width_m": 5.0,
+    "length_m": 4.5,
+    "accessible_for_wheelchairs": true,
+    "amenities": BathroomAmenities(),
+    "photos": [
+        Photo(),
+        Photo(),
+    ],
+    "videos": [
+        Video(),
+        Video(),
+    ]
+}
+```
+
+### Campos
+
+| Campo                       | Tipo         | Descripción                                                                 |
+|-----------------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`                       | `ObjectId`   | Identificador único del documento de baño.                                  |
+| `name`                      | `String`     | Nombre o descripción del baño (ej: "Baño Principal", "Baño de Invitados").  |
+| `privacy`                   | `Number`     | Privacidad del baño Ver [Bathroom Type](/docs/database/catalogs/bathroom-type)                   |
+| `width_m`                   | `Number`     | Ancho del baño en metros.                                                  |
+| `length_m`                  | `Number`     | Largo del baño en metros.                                                  |
+| `accessible_for_wheelchairs`| `Boolean`    | Indica si el baño es accesible para sillas de ruedas.                      |
+| `amenities`                 | `Object`     | Detalles de las amenidades del baño. Ver [BathroomAmenities](/docs/database/schemas/secondary-schemas/bathroom-amenities). |
+| `photos`                    | `Array`      | Lista de fotos del baño. Ver [Photo](/docs/database/schemas/secondary-schemas/photo). |
+| `videos`                    | `Array`      | Lista de videos del baño. Ver [Video](/docs/database/schemas/secondary-schemas/video).|

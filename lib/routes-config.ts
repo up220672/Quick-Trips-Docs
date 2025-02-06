@@ -14,10 +14,11 @@ export const ROUTES: EachRoute[] = [
     noLink: true,
     items: [
       { title: "Introduction", href: "/introduction" },
+      { title: "Installation", href: "/installation" },
     ],
   },
   {
-    "title": "Database Model",
+    "title": "Database Schema",
     "href": "/database",
     "noLink": true,
     "items": [
@@ -36,16 +37,16 @@ export const ROUTES: EachRoute[] = [
       },
       { title: "Main Collections", href: "/collections" },
       {
-        title: "Models",
-        href: "/models",
+        title: "Schemas",
+        href: "/schemas",
         items: [
           { title: "User", href: "/user" },
           { title: "Payment", href: "/payment" },
           { title: "Property", href: "/property" },
           { title: "Booking", href: "/booking" },
           {
-            title: "Secondary Models",
-            href: "/secondary-models",
+            title: "Secondary Schemas",
+            href: "/secondary-schemas",
             items: [
               { title: "Photo", href: "/photo" },
               { title: "Video", href: "/video" },

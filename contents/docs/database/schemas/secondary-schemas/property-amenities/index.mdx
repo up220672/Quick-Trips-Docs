@@ -1,0 +1,166 @@
+---
+title: Property Amenities  
+description: Representa un esquema de Amenidades de una propiedad, diseñado para almacenar información detallada sobre los servicios y características de la vivienda a rentar.
+---
+
+### Schema
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7319"),
+    "wifi": true,
+    "panoramic_view": true,
+    "bay_view": false,
+    "city_view": true,
+    "mountain_view": false,
+    "lake_view": false,
+    "garden_view": true,
+    "pool_view": false,
+    "beach_view": false,
+    "forest_view": false,
+    "ocean_view": true,
+    "cleaning_service": true,
+    "laundry_service": true,
+    "laundry_room": true,
+    "iron": true,
+    "ironing_board": true,
+    "washing_machine": true,
+    "dryer": true,
+    "safe_box": true,
+    "security_system": true,
+    "fire_extinguisher": true,
+    "outdoor_furniture": true,
+    "bbq_grill": true,
+    "private_pool": true,
+    "shared_pool": false,
+    "private_gym": true,
+    "shared_gym": false,
+    "sauna": true,
+    "jacuzzi": true,
+    "sun_loungers": true,
+    "hammock": true,
+    "fire_pit": true,
+    "gazebo": true,
+    "elevator": true,
+    "private_parking": true,
+    "street_parking": false,
+    "garage": true,
+    "bike_storage": true,
+    "private_entrance": true,
+    "wheelchair_accessible": true,
+    "pets_allowed": true,
+    "smoking_allowed": false,
+    "events_allowed": true,
+    "children_allowed": true,
+    "first_aid_kit": true,
+    "smoke_detector": true,
+    "carbon_monoxide_detector": true,
+    "balcony": true,
+    "terrace": true,
+    "garden": true,
+    "spa": true,
+    "library_room": true,
+    "cinema_room": true,
+    "game_room": true,
+    "music_room": true,
+    "office": true,
+    "ping_pong_table": true,
+    "pool_table": true,
+    "children_play_area": true,
+    "tennis_court": true,
+    "basketball_court": true,
+    "soccer_field": true,
+    "volleyball_court": true,
+    "golf_course": true,
+    "mini_golf": true,
+    "beach_access": true,
+    "lake_access": true,
+    "river_access": true,
+    "printer": true,
+    "scanner": true,
+    "pet_friendly": true,
+    "kid_friendly": true,
+    "elderly_friendly": true,
+    "electric_vehicle_charging_station": true
+}
+```
+
+### Campos
+
+| Campo                                      | Tipo         | Descripción                                                                 |
+|--------------------------------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`                                      | `ObjectId`   | Identificador único del documento de amenidades de la propiedad.            |
+| `wifi`                                     | `Boolean`    | Indica si la propiedad tiene conexión a internet inalámbrica.              |
+| `panoramic_view`                           | `Boolean`    | Indica si la propiedad tiene una vista panorámica.                         |
+| `bay_view`                                 | `Boolean`    | Indica si la propiedad tiene vista a la bahía.                             |
+| `city_view`                                | `Boolean`    | Indica si la propiedad tiene vista a la ciudad.                            |
+| `mountain_view`                            | `Boolean`    | Indica si la propiedad tiene vista a las montañas.                         |
+| `lake_view`                                | `Boolean`    | Indica si la propiedad tiene vista al lago.                                |
+| `garden_view`                              | `Boolean`    | Indica si la propiedad tiene vista al jardín.                              |
+| `pool_view`                                | `Boolean`    | Indica si la propiedad tiene vista a la piscina.                           |
+| `beach_view`                               | `Boolean`    | Indica si la propiedad tiene vista a la playa.                             |
+| `forest_view`                              | `Boolean`    | Indica si la propiedad tiene vista al bosque.                              |
+| `ocean_view`                               | `Boolean`    | Indica si la propiedad tiene vista al océano.                              |
+| `cleaning_service`                         | `Boolean`    | Indica si la propiedad ofrece servicio de limpieza.                        |
+| `laundry_service`                          | `Boolean`    | Indica si la propiedad ofrece servicio de lavandería.                      |
+| `laundry_room`                             | `Boolean`    | Indica si la propiedad tiene una sala de lavandería.                       |
+| `iron`                                     | `Boolean`    | Indica si la propiedad tiene una plancha disponible.                       |
+| `ironing_board`                            | `Boolean`    | Indica si la propiedad tiene una tabla de planchar disponible.             |
+| `washing_machine`                          | `Boolean`    | Indica si la propiedad tiene una lavadora.                                 |
+| `dryer`                                    | `Boolean`    | Indica si la propiedad tiene una secadora.                                 |
+| `safe_box`                                 | `Boolean`    | Indica si la propiedad tiene una caja fuerte.                              |
+| `security_system`                          | `Boolean`    | Indica si la propiedad tiene un sistema de seguridad.                      |
+| `fire_extinguisher`                        | `Boolean`    | Indica si la propiedad tiene un extintor de incendios.                     |
+| `outdoor_furniture`                        | `Boolean`    | Indica si la propiedad tiene muebles de exterior.                          |
+| `bbq_grill`                                | `Boolean`    | Indica si la propiedad tiene una parrilla para barbacoa.                   |
+| `private_pool`                             | `Boolean`    | Indica si la propiedad tiene una piscina privada.                          |
+| `shared_pool`                              | `Boolean`    | Indica si la propiedad tiene acceso a una piscina compartida.              |
+| `private_gym`                              | `Boolean`    | Indica si la propiedad tiene un gimnasio privado.                          |
+| `shared_gym`                               | `Boolean`    | Indica si la propiedad tiene acceso a un gimnasio compartido.              |
+| `sauna`                                    | `Boolean`    | Indica si la propiedad tiene una sauna.                                    |
+| `jacuzzi`                                  | `Boolean`    | Indica si la propiedad tiene un jacuzzi.                                   |
+| `sun_loungers`                             | `Boolean`    | Indica si la propiedad tiene tumbonas.                                     |
+| `hammock`                                  | `Boolean`    | Indica si la propiedad tiene una hamaca.                                   |
+| `fire_pit`                                 | `Boolean`    | Indica si la propiedad tiene una fogata.                                   |
+| `gazebo`                                   | `Boolean`    | Indica si la propiedad tiene un gazebo.                                    |
+| `elevator`                                 | `Boolean`    | Indica si la propiedad tiene un ascensor.                                  |
+| `private_parking`                          | `Boolean`    | Indica si la propiedad tiene estacionamiento privado.                      |
+| `street_parking`                           | `Boolean`    | Indica si la propiedad tiene estacionamiento en la calle.                  |
+| `garage`                                   | `Boolean`    | Indica si la propiedad tiene un garaje.                                    |
+| `bike_storage`                             | `Boolean`    | Indica si la propiedad tiene un área de almacenamiento para bicicletas.    |
+| `private_entrance`                         | `Boolean`    | Indica si la propiedad tiene una entrada privada.                          |
+| `wheelchair_accessible`                    | `Boolean`    | Indica si la propiedad es accesible para sillas de ruedas.                 |
+| `pets_allowed`                             | `Boolean`    | Indica si se permiten mascotas en la propiedad.                            |
+| `smoking_allowed`                          | `Boolean`    | Indica si se permite fumar en la propiedad.                                |
+| `events_allowed`                           | `Boolean`    | Indica si se permiten eventos en la propiedad.                             |
+| `children_allowed`                         | `Boolean`    | Indica si se permiten niños en la propiedad.                               |
+| `first_aid_kit`                            | `Boolean`    | Indica si la propiedad tiene un botiquín de primeros auxilios.             |
+| `smoke_detector`                           | `Boolean`    | Indica si la propiedad tiene un detector de humo.                          |
+| `carbon_monoxide_detector`                 | `Boolean`    | Indica si la propiedad tiene un detector de monóxido de carbono.           |
+| `balcony`                                  | `Boolean`    | Indica si la propiedad tiene un balcón.                                    |
+| `terrace`                                  | `Boolean`    | Indica si la propiedad tiene una terraza.                                  |
+| `garden`                                   | `Boolean`    | Indica si la propiedad tiene un jardín.                                    |
+| `spa`                                      | `Boolean`    | Indica si la propiedad tiene un spa.                                       |
+| `library_room`                             | `Boolean`    | Indica si la propiedad tiene una biblioteca.                               |
+| `cinema_room`                              | `Boolean`    | Indica si la propiedad tiene una sala de cine.                             |
+| `game_room`                                | `Boolean`    | Indica si la propiedad tiene una sala de juegos.                           |
+| `music_room`                               | `Boolean`    | Indica si la propiedad tiene una sala de música.                           |
+| `office`                                   | `Boolean`    | Indica si la propiedad tiene una oficina.                                  |
+| `ping_pong_table`                          | `Boolean`    | Indica si la propiedad tiene una mesa de ping pong.                        |
+| `pool_table`                               | `Boolean`    | Indica si la propiedad tiene una mesa de billar.                           |
+| `children_play_area`                       | `Boolean`    | Indica si la propiedad tiene un área de juegos para niños.                 |
+| `tennis_court`                             | `Boolean`    | Indica si la propiedad tiene una cancha de tenis.                          |
+| `basketball_court`                         | `Boolean`    | Indica si la propiedad tiene una cancha de baloncesto.                     |
+| `soccer_field`                             | `Boolean`    | Indica si la propiedad tiene un campo de fútbol.                           |
+| `volleyball_court`                         | `Boolean`    | Indica si la propiedad tiene una cancha de voleibol.                       |
+| `golf_course`                              | `Boolean`    | Indica si la propiedad tiene un campo de golf.                             |
+| `mini_golf`                                | `Boolean`    | Indica si la propiedad tiene un campo de mini golf.                        |
+| `beach_access`                             | `Boolean`    | Indica si la propiedad tiene acceso a la playa.                            |
+| `lake_access`                              | `Boolean`    | Indica si la propiedad tiene acceso al lago.                               |
+| `river_access`                             | `Boolean`    | Indica si la propiedad tiene acceso al río.                                |
+| `printer`                                  | `Boolean`    | Indica si la propiedad tiene una impresora.                                |
+| `scanner`                                  | `Boolean`    | Indica si la propiedad tiene un escáner.                                   |
+| `pet_friendly`                             | `Boolean`    | Indica si la propiedad es apta para mascotas.                              |
+| `kid_friendly`                             | `Boolean`    | Indica si la propiedad es apta para niños.                                 |
+| `elderly_friendly`                         | `Boolean`    | Indica si la propiedad es apta para personas mayores.                      |
+| `electric_vehicle_charging_station`        | `Boolean`    | Indica si la propiedad tiene una estación de carga para vehículos eléctricos. |

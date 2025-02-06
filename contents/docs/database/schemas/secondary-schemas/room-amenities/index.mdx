@@ -1,0 +1,185 @@
+---
+title: Room Amenities Schema
+description: Representa un esquema de Amenidades, diseñado para almacenar información detallada sobre los servicios y características de una habitación en una propiedad.
+---
+
+Incluye información sobre la disponibilidad de televisión, clóset, aire acondicionado, calefacción, ventilador, escritorio, espejo, lámparas, wifi, sofá, cortinas, mini refrigerador, cobijas extra, almohadas extra, alfombra, estante para libros, cajones, tomas de corriente, sistema de sonido y reloj despertador.
+
+### Schema
+
+```javascript
+const mongoose = require('mongoose');
+
+const RoomAmenitiesSchema = new mongoose.Schema({
+  tv: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  closet: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  air_conditioner: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  heater: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  fan: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  desk: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  mirror: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  lamps: { 
+    type: Number, 
+    required: false,
+    default: 0 
+  },
+  wifi: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  sofa: { 
+    type: Number, 
+    required: false,
+    default: 0 
+  },
+  curtains: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  blackout_curtains: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  mini_fridge: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  extra_blankets: { 
+    type: Number, 
+    required: false,
+    default: 0 
+  },
+  extra_pillows: { 
+    type: Number, 
+    required: false,
+    default: 0 
+  },
+  rug: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  bookshelf: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  drawers: { 
+    type: Number, 
+    required: false,
+    default: 0 
+  },
+  power_outlets: { 
+    type: Number, 
+    required: false,
+    default: 0 
+  },
+  sound_system: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  },
+  alarm_clock: { 
+    type: Boolean, 
+    required: false,
+    default: false 
+  }
+}, { versionKey: false });
+
+const RoomAmenities = mongoose.model('RoomAmenities', RoomAmenitiesSchema);
+
+module.exports = { RoomAmenities, RoomAmenitiesSchema };
+```
+
+### Campos
+
+| Campo              | Tipo         | Descripción                                                                 |
+|--------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`              | `ObjectId`   | Identificador único del documento que representa las amenidades de la habitación. |
+| `tv`               | `Boolean`    | Indica si hay una televisión disponible. Valor por defecto: `false`.       |
+| `closet`           | `Boolean`    | Determina si la habitación incluye un clóset. Valor por defecto: `false`.   |
+| `air_conditioner`  | `Boolean`    | Verifica si hay aire acondicionado. Valor por defecto: `false`.             |
+| `heater`           | `Boolean`    | Indica si hay calefacción. Valor por defecto: `false`.                      |
+| `fan`              | `Boolean`    | Indica si hay ventilador. Valor por defecto: `false`.                       |
+| `desk`             | `Boolean`    | Confirma si hay un escritorio. Valor por defecto: `false`.                  |
+| `mirror`           | `Boolean`    | Indica si hay un espejo. Valor por defecto: `false`.                        |
+| `lamps`            | `Number`     | Número de lámparas disponibles. Valor por defecto: `0`.                     |
+| `wifi`             | `Boolean`    | Indica si hay conexión a internet inalámbrica. Valor por defecto: `false`.  |
+| `sofa`             | `Number`     | Número de sofás disponibles. Valor por defecto: `0`.                        |
+| `curtains`         | `Boolean`    | Confirma si hay cortinas estándar. Valor por defecto: `false`.              |
+| `blackout_curtains`| `Boolean`    | Indica si hay cortinas blackout. Valor por defecto: `false`.                |
+| `mini_fridge`      | `Boolean`    | Verifica si hay un mini refrigerador. Valor por defecto: `false`.           |
+| `extra_blankets`   | `Number`     | Número de cobijas extra disponibles. Valor por defecto: `0`.                |
+| `extra_pillows`    | `Number`     | Número de almohadas extra disponibles. Valor por defecto: `0`.              |
+| `rug`              | `Boolean`    | Indica si hay una alfombra. Valor por defecto: `false`.                     |
+| `bookshelf`        | `Boolean`    | Indica si hay un estante para libros. Valor por defecto: `false`.           |
+| `drawers`          | `Number`     | Cantidad de cajones disponibles. Valor por defecto: `0`.                    |
+| `power_outlets`    | `Number`     | Número de tomas de corriente disponibles. Valor por defecto: `0`.           |
+| `sound_system`     | `Boolean`    | Indica si hay un sistema de sonido. Valor por defecto: `false`.             |
+| `alarm_clock`      | `Boolean`    | Verifica si hay un reloj despertador. Valor por defecto: `false`.           |
+
+**Notas adicionales**
+
+- **`versionKey: false`**: Este parámetro en el esquema de Mongoose desactiva la inclusión del campo `__v` que Mongoose añade por defecto para controlar la versión del documento.
+- **Valores por defecto**: Todos los campos booleanos tienen un valor por defecto de `false`, y los campos numéricos tienen un valor por defecto de `0`. Esto asegura que, si no se proporciona un valor, el campo se inicialice con un valor predeterminado seguro.
+
+### Ejemplo Completo
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7319"),
+    "tv": true,
+    "closet": true,
+    "air_conditioner": true,
+    "heater": true,
+    "fan": true,
+    "desk": true,
+    "mirror": true,
+    "lamps": 2,
+    "wifi": true,
+    "sofa": 1,
+    "curtains": true,
+    "blackout_curtains": false,
+    "mini_fridge": true,
+    "extra_blankets": 2,
+    "extra_pillows": 4,
+    "rug": true,
+    "bookshelf": true,
+    "drawers": 4,
+    "power_outlets": 4,
+    "sound_system": false,
+    "alarm_clock": true
+}
+```

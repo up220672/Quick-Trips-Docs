@@ -1,0 +1,45 @@
+---
+title: Notification  
+description: Representa un esquema de Notificación, diseñado para almacenar información sobre las notificaciones enviadas a los usuarios en una plataforma.
+---
+
+**Notas**
+
+- Este esquema se almacena en el esquema de User, se permiten hasta 100 notificaciones leídas por usuario. Por lo que se deben de eliminar las notificaciones leídas para evitar que se sobrepase el límite.
+
+- Si se envía un mensaje largo y el link es nulo, significa que esto es una notificación que mostrará una alerta en pantalla. Ideal para mandar pequeños avisos.
+
+### Schema
+
+```json
+{
+    "_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e6"),
+    "user_id": ObjectId("64f8e4b2e4b0a1a2b3c4d5e7"),
+    "title": "Booking Confirmed",
+    "icon" : "https://example.com/notification-icon.png",
+    "message": "Your booking for Property XYZ has been confirmed.",
+    "is_read": false,
+    "entity_type" : "booking",
+    "entity_id" : "64f8e4b2e4b0a1a2b3c4d5e8",
+    "long_message": "Your booking for Property XYZ has been confirmed. You can view the details by clicking the link below.",
+    "created_at": ISODate("2023-10-05T14:30:00Z"),
+    "updated_at": ISODate("2023-10-05T14:30:00Z")
+}
+```
+
+### Campos
+
+| Campo               | Tipo         | Descripción                                                             |
+|---------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`               | `ObjectId`   | Identificador único del documento de notificación.                            |
+| `user_id`           | `ObjectId`   | Identificador del usuario que recibirá la notificación.                   |
+| `title`             | `String`     | Título de la notificación (e.g., "Booking Confirmed").                      |
+| `icon`              | `String`     | URL del icono que representa la notificación.                              |
+| `message`           | `String`     | Contenido corto del mensaje de la notificación.                                  |
+| `is_read`           | `Boolean`    | Indica si la notificación ha sido leída por el usuario.               |
+| `entity_type`       | `String`     | Tipo de entidad relacionada (e.g., "booking", "payment"). Ver [Routes](docs/database/catalogs/routes)                      |
+| `entity_id`         | `String`     | Identificador de la entidad relacionada (e.g., booking ID, payment ID).            |
+| `long_message`      | `String`     | Contenido detallado del mensaje de la notificación.                               |
+| `created_at`        | `Date`       | Fecha y hora en que se creó la notificación.                            |
+| `updated_at`        | `Date`       | Fecha y hora en que se actualizó la notificación por última vez.                       |
+

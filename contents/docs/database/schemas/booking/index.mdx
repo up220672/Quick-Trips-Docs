@@ -1,0 +1,122 @@
+---
+title: Booking Schema
+description: Representa un esquema de Reservación, diseñado para almacenar información detallada sobre cada vez que un huésped realiza una reserva de una propiedad.
+---
+
+
+## Schema
+
+El esquema `Booking` se define utilizando Mongoose, una herramienta de modelado de objetos MongoDB para Node.js. A continuación se muestra la definición del esquema:
+
+```javascript
+const mongoose = require('mongoose');
+
+const BookingSchema = new mongoose.Schema({
+  current_payment_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Payment',
+    required: true,
+    default: null
+  },
+  payment_history: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payment',
+      required: true,
+      default: null
+    },
+  ],
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+    default: null
+  },
+  property_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Property',
+    required: true,
+    default: null
+  },
+  host_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+    default: null
+  },
+  check_in: {
+    type: Date,
+    required: true,
+    default: null
+  },
+  check_out: {
+    type: Date,
+    required: true,
+    default: null
+  },
+  guests: {
+    type: Number,
+    required: true,
+    default: 1,
+    min: 1
+  },
+  pets: {
+    type: Number,
+    required: false,
+    default: 0,
+    min: 0
+  },
+  created_at: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  is_active: {
+    type: Boolean,
+    required: true,
+    default: true
+  }
+}, { versionKey: false });
+
+const Booking = mongoose.model('Booking', BookingSchema);
+
+module.exports = { Booking, BookingSchema };
+```
+
+## Campos del Esquema
+
+| Campo               | Tipo         | Descripción                                                                 |
+|---------------------|--------------|-----------------------------------------------------------------------------|
+| `_id`               | `ObjectId`   | Identificador único del documento de reservación.                           |
+| `current_payment_id`| `ObjectId`   | Identificador único de la transacción de pago actual asociada a la reservación. |
+| `payment_history`   | `Array`      | Historial de identificadores de transacciones de pago asociadas a la reservación. |
+| `user_id`           | `ObjectId`   | Identificador del usuario que realizó la reservación.                       |
+| `property_id`       | `ObjectId`   | Identificador de la propiedad reservada.                                    |
+| `host_id`           | `ObjectId`   | Identificador del anfitrión que posee la propiedad.                         |
+| `check_in`          | `Date`       | Fecha y hora de entrada para la reservación.                                |
+| `check_out`         | `Date`       | Fecha y hora de salida para la reservación.                                 |
+| `guests`            | `Number`     | Número de huéspedes incluidos en la reservación.                            |
+| `pets`              | `Number`     | Número de mascotas incluidas en la reservación (si se permiten).            |
+| `created_at`        | `Date`       | Fecha y hora en que se creó la reservación.                                 |
+| `is_active`         | `Boolean`    | Indica si la reservación está actualmente activa.                           |
+
+## Ejemplo Completo
+
+```json
+{
+    "_id": ObjectId("679ecc009d413f3541bf6418"),
+    "current_payment_id": ObjectId("679ecc0d10e1515ca8a98b9b"),
+    "payment_history": [
+        ObjectId("679ecc0d10e1515ca8a98b9b")
+    ],
+    "user_id": ObjectId("679ecc238b3cd3b125cb5a3a"),
+    "property_id": ObjectId("679ecc29c290875876a75174"),
+    "host_id": ObjectId("679ecc2e96733878c93984f1"),
+    "check_in": ISODate("2022-01-15T00:00:00Z"),
+    "check_out": ISODate("2022-01-20T00:00:00Z"),
+    "guests": 2,
+    "pets": 0,
+    "created_at": ISODate("2022-01-15T00:00:00Z"),
+    "is_active": true
+}
+```

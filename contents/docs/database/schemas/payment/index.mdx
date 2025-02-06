@@ -1,0 +1,122 @@
+# Payment Schema
+
+El esquema `Payment` está diseñado para almacenar información detallada sobre las transacciones realizadas por los usuarios en la plataforma. Este documento proporciona una guía completa sobre la estructura y el uso del esquema `Payment`.
+
+## Schema
+
+El esquema `Payment` se define utilizando Mongoose, una herramienta de modelado de objetos MongoDB para Node.js. A continuación se muestra la definición del esquema:
+
+```javascript
+const mongoose = require('mongoose');
+const { AmountDetails } = require('./secondary_models/amountDetails');
+const { CardPaymentMethod } = require('./secondary_models/cardPaymentMethod');
+const AmountDetailsSchema = require('./secondary_models/amountDetails').AmountDetailsSchema;
+const CardPaymentMethodSchema = require('./secondary_models/cardPaymentMethod').CardPaymentMethodSchema;
+
+const PaymentSchema = new mongoose.Schema({
+  amount_details: { 
+    type: AmountDetailsSchema,
+    ref: 'AmountDetails',
+    required: false,
+    default: AmountDetails(),
+  },
+  card: { 
+    type: CardPaymentMethodSchema, 
+    ref: 'CardPaymentMethod',
+    required: false,
+    default: CardPaymentMethod(),
+  },
+  current_status: { 
+    type: Number, 
+    required: false,
+    default: null 
+  },
+  created_at: { 
+    type: Date, 
+    required: false,
+    default: Date.now 
+  },
+  confirmed_at: { 
+    type: Date, 
+    required: false,
+    default: null 
+  }
+}, { versionKey: false });
+
+const Payment = mongoose.model('Payment', PaymentSchema);
+
+module.exports = { Payment, PaymentSchema };
+```
+
+## Campos del Esquema
+
+| Campo               | Tipo               | Descripción                                                                 |
+|---------------------|--------------------|-----------------------------------------------------------------------------|
+| `_id`               | `ObjectId`         | Identificador único del documento de pago.                                  |
+| `amount_details`    | `AmountDetailsSchema` | Detalles del monto asociado al pago. Ver [Amount Details](/docs/database/schemas/secondary-schemas/amount-details). |
+| `card`              | `CardPaymentMethodSchema` | Método de pago con tarjeta asociado al pago. Ver [Card Payment Method](/docs/database/schemas/secondary-schemas/card-payment-method). |
+| `current_status`    | `Number`           | Estado actual del pago. Ver [Payment Status Type](/docs/database/catalogs/payment-status-type). |
+| `created_at`        | `Date`             | Fecha y hora de creación del pago.                                          |
+| `confirmed_at`      | `Date`             | Fecha y hora de confirmación del pago.                                      |
+
+
+`amount_details`
+
+Este campo contiene los detalles del monto asociado al pago, incluyendo el subtotal, la comisión de la plataforma, los impuestos y el total. También se especifica la moneda utilizada en la transacción. Para más detalles, consulta el esquema [Amount Details](/docs/database/schemas/secondary-schemas/amount-details).
+
+`card`
+
+Este campo almacena la información del método de pago con tarjeta, incluyendo el nombre del titular, los últimos cuatro dígitos de la tarjeta, el tipo de tarjeta, la fecha de expiración y la dirección asociada. Para más detalles, consulta el esquema [Card Payment Method](/docs/database/schemas/secondary-schemas/card-payment-method).
+
+`current_status`
+
+Este campo indica el estado actual del pago. Los valores posibles están definidos en el catálogo [Payment Status Type](/docs/database/catalogs/payment-status-type).
+
+`created_at`
+
+Este campo registra la fecha y hora en que se creó el pago.
+
+`confirmed_at`
+
+Este campo registra la fecha y hora en que se confirmó el pago. Si el pago aún no ha sido confirmado, este campo será `null`.
+
+
+## Ejemplo Completo
+
+```json
+{
+    "_id": ObjectId("679ecc009d413f3541bf6418"),
+    "amount_details": {
+        "_id": ObjectId("679ecc34acd508d87eb99b6f"),
+        "subtotal": 200.00,
+        "platformCommission": 30.75,
+        "tax": 20.00,
+        "total": 250.75,
+        "currency": "MXN"
+    },
+    "card" : {
+        "_id": ObjectId("679ecc39abc51bc602146523"),
+        "name" : "John Doe",
+        "last4": "1111",
+        "card_type": "Visa",
+        "expiration_date": "12/25",
+        "address": {
+            "_id" : ObjectId("679ecc3fc2c107204de5fd7b"),
+            "street": "Calle Falsa 123",
+            "exterior_number": "123",
+            "interior_number": "A",
+            "neighborhood": "Narvarte",
+            "city": "CDMX",
+            "state": "CDMX",
+            "postal_code": "03020",
+            "country": "México",
+            "references": "Entre Calles Verdadera y Ficticia, cerca del parque",
+            "latitude": 19.4326077,
+            "longitude": -99.133208
+        }        
+    },
+    "current_status": 0,
+    "created_at": ISODate("2021-09-01T00:00:00Z"),
+    "confirmed_at": ISODate("2021-09-01T00:00:00Z")
+}
+```

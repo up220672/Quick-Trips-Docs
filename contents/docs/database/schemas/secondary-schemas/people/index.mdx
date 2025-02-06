@@ -1,0 +1,26 @@
+---
+title: People
+description: Representa un esquema para almacenar la cantidad de personas/mascotas que reservan una propiedad.
+---
+
+### Schema
+
+```json
+{
+    "_id": ObjectId("679eb0ba5d663ab7ad2b7319"),
+    "adults": 2,
+    "children": 1,
+    "babies": 1,
+    "pets": 0
+}
+```
+
+### Campos
+
+| Campo       | Tipo         | Descripción                                                             |
+|-------------|--------------|-------------------------------------------------------------------------|
+| `_id`       | `ObjectId`   | Identificador único del documento que representa las personas/mascotas en una reservación. |
+| `adults`    | `Number`     | Número de adultos que se registraron en una reservación                  |
+| `children`  | `Number`     | Número de niños que se registraron en una reservación                    |
+| `babies`    | `Number`     | Número de bebés que se registraron en una reservación                    |
+| `pets`      | `Number`     | Número de mascotas que se registraron en una reservación                 |
